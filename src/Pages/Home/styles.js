@@ -7,9 +7,10 @@ export const ContainerBg = styled.div`
 `;
 
 export const Main = styled.div`
-  width: 95%;
-  height: 85%;
-  margin: 1.3rem auto;
+  max-width: 95%;
+  height: 100vh;
+  max-height: 82%;
+  margin: 1rem auto;
   background-color: #fff;
   display: flex;
   justify-content: center;
@@ -51,5 +52,16 @@ export const Card = styled.div`
     letter-spacing: 0px;
     color: #343a40;
     opacity: 1;
+  }
+
+  // @media-queries
+  @media (max-width: 523px) {
+    width: 50%;
+    height: 27%;
+  }
+
+  @media (max-width: 478px) {
+    width: 62%;
+    height: 27%;
   }
 `;
