@@ -7,9 +7,10 @@ export const ContainerBg = styled.div`
 `;
 
 export const ContainerMain = styled.div`
-  width: 95%;
-  height: 78%;
-  margin: 1.3rem auto;
+  max-width: 95%;
+  height: 100vh;
+  max-height: 82%;
+  margin: 0.8rem auto;
   background-color: #fff;
 
   .back-home {
@@ -46,7 +47,7 @@ export const ContainerForm = styled.div`
   border: solid red 1px;
 
   .form {
-    width: 83%;
+    width: 88%;
     height: 70%;
     border: solid 1px blue;
   }
