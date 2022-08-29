@@ -5,6 +5,7 @@ import Button, { ButtonProps } from '@mui/material/Button';
 import styled from '@emotion/styled';
 import api from '../../Services/api';
 import logo from '../../Assets/styleImages/Logo.svg';
+import { useNavigate } from 'react-router-dom';
 
 const getData = () => {
   api()
@@ -15,6 +16,7 @@ const getData = () => {
 console.log(getData());
 
 const Login = () => {
+  const navigate = useNavigate();
   return (
     <ContainerBg>
       <ContainerLogin>
@@ -45,7 +47,14 @@ const Login = () => {
         </div>
 
         <div className="btn">
-          <Button className="button-submit" size="large" fullWidth>
+          <Button
+            className="button-submit"
+            size="large"
+            fullWidth
+            onClick={() => {
+              navigate('/home');
+            }}
+          >
             Entrar
           </Button>
         </div>

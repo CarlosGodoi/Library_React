@@ -17,7 +17,7 @@ export const Main = styled.div`
   align-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 2.5rem;
+  gap: 1.5rem;
 `;
 
 export const Card = styled.div`
