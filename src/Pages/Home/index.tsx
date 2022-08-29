@@ -4,7 +4,7 @@ import { Card, ContainerBg, Main } from './styles';
 import add from '../../Assets/styleImages/add_circle.svg';
 import contact from '../../Assets/styleImages/contacts.svg';
 import pending from '../../Assets/styleImages/pending.svg';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const navigate = useNavigate();

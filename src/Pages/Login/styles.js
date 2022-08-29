@@ -64,4 +64,18 @@ export const ContainerLogin = styled.div`
     width: 22.8rem;
     margin: 0 auto;
   }
+
+  .button-submit {
+    background-color: #ffc501;
+    height: 45px;
+    font: normal normal bold 16px/21px 'Roboto';
+    letter-spacing: 0px;
+    color: #000000;
+    text-transform: uppercase;
+    opacity: 1;
+    :hover {
+      border: solid 1.5px #ffc501;
+      transition: 0.6s;
+    }
+  }
 `;

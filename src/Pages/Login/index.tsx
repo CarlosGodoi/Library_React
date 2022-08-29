@@ -6,31 +6,6 @@ import styled from '@emotion/styled';
 import api from '../../Services/api';
 import logo from '../../Assets/styleImages/Logo.svg';
 
-const ValidationTextField = styled(TextField)({
-  '& input:valid + fieldset': {
-    borderColor: 'none',
-    borderWidth: 1,
-  },
-  '& input:invalid + fieldset': {
-    borderColor: 'red',
-    borderWidth: 2,
-  },
-  '& input:valid:focus + fieldset': {
-    borderColor: '#FFC501',
-    borderLeftWidth: 1,
-    padding: '4px !important', // override inline-style
-  },
-});
-
-const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
-  backgroundColor: '#FFC501',
-  color: 'black',
-  fontWeight: 'bold',
-  '&:hover': {
-    backgroundColor: '#FFE17C',
-  },
-}));
-
 const getData = () => {
   api()
     .then((res: any) => console.log(res.data))
@@ -47,7 +22,7 @@ const Login = () => {
           <img src={logo} alt="" />
         </div>
         <div className="Inputs">
-          <ValidationTextField
+          <TextField
             margin="dense"
             className="email"
             name="email"
@@ -55,7 +30,7 @@ const Login = () => {
             label="Email"
             variant="outlined"
           />
-          <ValidationTextField
+          <TextField
             margin="dense"
             className="senha"
             id="outlined-basic"
@@ -70,9 +45,9 @@ const Login = () => {
         </div>
 
         <div className="btn">
-          <ColorButton size="large" fullWidth>
+          <Button className="button-submit" size="large" fullWidth>
             Entrar
-          </ColorButton>
+          </Button>
         </div>
       </ContainerLogin>
     </ContainerBg>
