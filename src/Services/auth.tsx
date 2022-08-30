@@ -1,13 +1,13 @@
-const api = async () => {
+const userAuth = async () => {
   let data;
 
   return fetch('./data.json')
     .then((res) => res.json())
     .then((body) => {
-      data = body.data;
+      data = body.data.login;
       return Promise.resolve(data);
     })
     .catch((err) => Promise.reject(err));
 };
 
-export default api;
+export default userAuth;
