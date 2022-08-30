@@ -1,16 +1,13 @@
 import styled from 'styled-components';
-import lupa from '../../Assets/styleImages/lupa.svg';
 
 export const ContainerBg = styled.div`
   width: 100%;
-  height: 100vh;
+  padding-bottom: 1rem;
   background-color: #f4f4f4;
 `;
 
 export const ContainerMain = styled.div`
   max-width: 95%;
-  height: 100vh;
-  max-height: 82%;
   margin: 0.7rem auto;
   background-color: #fff;
 
@@ -40,9 +37,8 @@ export const ContainerMain = styled.div`
 
 export const SearchBooks = styled.div`
   width: 90%;
-  height: 69vh;
+  padding-bottom: 1.5rem;
   margin: 0 auto;
-  border: solid 1px red;
 
   .container {
     width: 80%;
@@ -70,13 +66,18 @@ export const SearchBooks = styled.div`
     width: 17%;
     height: 40px;
     background-color: #ffc501;
-    border: solid 1px #ffc501;
+    border: solid 1px #adb5bd;
     font: normal normal 600 16px/21px 'Roboto';
     letter-spacing: 0px;
     color: #000000;
     opacity: 1;
     border-radius: 5px;
     margin-right: 8px;
+
+    :hover {
+      background-color: #fee17f;
+      border: solid 1px #fee17f;
+    }
   }
 
   .select-search {
@@ -86,8 +87,41 @@ export const SearchBooks = styled.div`
 `;
 
 export const ContainerBooks = styled.div`
-  width: 90%;
-  height: 100px;
-  border: solid 1px blue;
+  width: 95%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 1.3rem;
+  padding: 1rem 0;
   margin: 0 auto;
+
+  .container-book {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 12.25rem;
+    height: 13.31rem;
+    padding: 1.2rem 0;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .book {
+    width: 6.75rem;
+    height: 9.68rem;
+  }
+
+  .title-book {
+    width: 90%;
+  }
+
+  .title-book p {
+    text-align: center;
+    font: normal normal 600 14px 'Roboto';
+    letter-spacing: 0px;
+    color: #3e4756;
+    opacity: 1;
+  }
 `;

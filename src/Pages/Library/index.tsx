@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../../Components/Header';
 import {
   ContainerBg,
@@ -10,9 +10,18 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useNavigate } from 'react-router-dom';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import allBooks from '../../Services/GetAllBooks';
 
 const Library = () => {
+  const [books, setBooks] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    allBooks()
+      .then((res: any) => setBooks(res))
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <ContainerBg>
       <Header />
@@ -27,7 +36,7 @@ const Library = () => {
           <div className="container">
             <form className="input-search">
               <input type="text" placeholder="Pesquisar livro..." />
-              <button>Buscar</button>
+              <button type="button">Buscar</button>
             </form>
             <div className="select-search">
               <Select
@@ -46,7 +55,20 @@ const Library = () => {
               </Select>
             </div>
           </div>
-          <ContainerBooks></ContainerBooks>
+          <ContainerBooks>
+            {books.map((book: any, i) => {
+              return (
+                <div className="container-book" key={i}>
+                  <div className="book">
+                    <img src={book.image} alt="Imagem do livro" />
+                  </div>
+                  <div className="title-book">
+                    <p>{book.tittle}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </ContainerBooks>
         </SearchBooks>
       </ContainerMain>
     </ContainerBg>

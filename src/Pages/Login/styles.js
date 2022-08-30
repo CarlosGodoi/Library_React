@@ -57,7 +57,7 @@ export const ContainerLogin = styled.div`
     cursor: pointer;
     :hover {
       color: #ffc501;
-      transition: 0.3s;
+      transition: 0.5s;
     }
   }
   .btn {
@@ -69,6 +69,7 @@ export const ContainerLogin = styled.div`
     background-color: #ffc501;
     height: 45px;
     font: normal normal bold 16px/21px 'Roboto';
+    border: 1px solid #adb5bd;
     letter-spacing: 0px;
     color: #000000;
     text-transform: uppercase;

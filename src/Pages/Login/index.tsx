@@ -1,21 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ContainerBg, ContainerLogin } from './styles';
 import TextField from '@mui/material/TextField';
-import Button, { ButtonProps } from '@mui/material/Button';
-import styled from '@emotion/styled';
-import api from '../../Services/api';
+import Button from '@mui/material/Button';
 import logo from '../../Assets/styleImages/Logo.svg';
 import { useNavigate } from 'react-router-dom';
-
-const getData = () => {
-  api()
-    .then((res: any) => console.log(res.data))
-    .catch((err: any) => console.log(err));
-};
-
-console.log(getData());
+import userAuth from '../../Services/auth';
 
 const Login = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    userAuth()
+      .then((res: any) => setData(res))
+      .catch((err: any) => console.log(err));
+  }, []);
+
+  console.log(data);
   const navigate = useNavigate();
   return (
     <ContainerBg>

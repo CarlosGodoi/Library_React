@@ -39,10 +39,11 @@ export const ContainerMain = styled.div`
 `;
 
 export const ContainerForm = styled.div`
-  width: 85%;
+  width: 90%;
   height: 70%;
   margin: 0 auto;
   display: grid;
+  grid-gap: 0.8rem;
   justify-content: space-around;
   align-items: center;
   grid-template-areas:
@@ -135,6 +136,7 @@ export const ContainerForm = styled.div`
     width: 143px;
     height: 53px;
     background-color: #ffc501;
+    border: solid 1px #adb5bd;
     border-radius: 5px;
     color: black;
     font-weight: 600;
@@ -143,5 +145,10 @@ export const ContainerForm = styled.div`
       border: solid 1.5px #ffc501;
       transition: 0.5s;
     }
+  }
+
+  // media queries
+  @media (max-width: 1000px) {
+    width: 50%;
   }
 `;
