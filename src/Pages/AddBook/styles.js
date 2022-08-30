@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import add from '../../Assets/styleImages/addImage.svg';
 
 export const ContainerBg = styled.div`
   width: 100%;
