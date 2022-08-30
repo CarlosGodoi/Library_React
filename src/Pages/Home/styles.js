@@ -29,6 +29,10 @@ export const Card = styled.div`
   flex-direction: column;
   justify-content: space-around;
   cursor: pointer;
+  :hover {
+    background-color: #ffc501;
+    transition: 0.5s;
+  }
 
   .img-card {
     width: 100%;
@@ -45,6 +49,7 @@ export const Card = styled.div`
     height: 3.5rem;
     background-color: #fff;
     margin: 0 auto;
+    z-index: 1000;
   }
 
   .title span {
