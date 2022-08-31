@@ -40,7 +40,5 @@ export const ContainerMain = styled.div`
 
 export const ContainerTable = styled.div`
   width: 95%;
-  height: 300px;
   margin: 0 auto;
-  border: solid 1px blue;
 `;

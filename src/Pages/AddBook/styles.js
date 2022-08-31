@@ -38,12 +38,12 @@ export const ContainerMain = styled.div`
 `;
 
 export const ContainerForm = styled.div`
-  width: 90%;
+  width: 85%;
   height: 70%;
-  margin: 0 auto;
+  margin: 1.8rem auto;
   display: grid;
-  grid-gap: 0.9rem;
-  justify-content: space-around;
+  grid-gap: 1rem;
+  justify-content: space-evenly;
   align-items: center;
   grid-template-areas:
     'image title author'
