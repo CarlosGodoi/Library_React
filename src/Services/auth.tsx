@@ -7,7 +7,7 @@ const userAuth = async () => {
       data = body.data.login;
       return Promise.resolve(data);
     })
-    .catch((err) => Promise.reject(err));
+    .catch((err) => Promise.reject(err + 'Ops! ocorreu um problema'));
 };
 
 export default userAuth;

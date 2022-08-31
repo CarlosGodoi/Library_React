@@ -29,6 +29,7 @@ const AddBook = () => {
 
           <div className="formTitle">
             <TextField
+              margin="dense"
               fullWidth
               name="title"
               id="title"
@@ -38,6 +39,7 @@ const AddBook = () => {
           </div>
           <div className="formAuthor">
             <TextField
+              margin="dense"
               fullWidth
               name="author"
               id="author"
@@ -47,6 +49,7 @@ const AddBook = () => {
           </div>
           <div className="formSynopsis">
             <TextField
+              margin="dense"
               multiline
               fullWidth
               rows={4}

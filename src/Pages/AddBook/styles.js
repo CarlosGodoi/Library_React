@@ -42,7 +42,7 @@ export const ContainerForm = styled.div`
   height: 70%;
   margin: 0 auto;
   display: grid;
-  grid-gap: 0.8rem;
+  grid-gap: 0.9rem;
   justify-content: space-around;
   align-items: center;
   grid-template-areas:
@@ -53,7 +53,7 @@ export const ContainerForm = styled.div`
 
   .formImage {
     width: 10.75rem;
-    height: 13.5rem;
+    height: 14.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -82,30 +82,30 @@ export const ContainerForm = styled.div`
 
   .formTitle {
     grid-area: title;
-    width: 350px;
+    width: 300px;
     height: 55px;
   }
 
   .formAuthor {
     grid-area: author;
-    width: 350px;
+    width: 300px;
     height: 55px;
   }
 
   .formSynopsis {
     grid-area: synopsis;
-    width: 350px;
+    width: 300px;
     height: 129px;
   }
 
   .formGenre {
     grid-area: genre;
-    width: 350px;
+    width: 300px;
     height: 55px;
   }
   .formData {
     grid-area: data;
-    width: 350px;
+    width: 300px;
     height: 55px;
   }
 
