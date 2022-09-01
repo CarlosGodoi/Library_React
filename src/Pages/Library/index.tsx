@@ -11,10 +11,13 @@ import { useNavigate } from 'react-router-dom';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import allBooks from '../../Services/GetAllBooks';
+import BookModal from '../../Components/Modals/BookModal';
 
 const Library = () => {
   const [books, setBooks] = useState([]);
   const navigate = useNavigate();
+
+  const [modalBook, setModalBook] = useState(false);
 
   useEffect(() => {
     allBooks()
@@ -58,7 +61,13 @@ const Library = () => {
           <ContainerBooks>
             {books.map((book: any, i) => {
               return (
-                <div className="container-book" key={i}>
+                <div
+                  className="container-book"
+                  key={i}
+                  onClick={() => {
+                    setModalBook(true);
+                  }}
+                >
                   <div className="book">
                     <img src={book.image} alt="Imagem do livro" />
                   </div>
@@ -68,6 +77,12 @@ const Library = () => {
                 </div>
               );
             })}
+            <BookModal
+              open={modalBook}
+              closeModal={() => {
+                setModalBook(false);
+              }}
+            />
           </ContainerBooks>
         </SearchBooks>
       </ContainerMain>

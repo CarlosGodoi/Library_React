@@ -38,12 +38,12 @@ export const ContainerMain = styled.div`
 `;
 
 export const ContainerForm = styled.div`
-  width: 85%;
-  height: 70%;
+  width: 75%;
   margin: 1.8rem auto;
+  padding: 1.5rem 1.5rem;
   display: grid;
-  grid-gap: 1rem;
-  justify-content: space-evenly;
+  grid-gap: 1.2rem;
+  justify-content: space-between;
   align-items: center;
   grid-template-areas:
     'image title author'
@@ -82,30 +82,30 @@ export const ContainerForm = styled.div`
 
   .formTitle {
     grid-area: title;
-    width: 300px;
+    width: 350px;
     height: 55px;
   }
 
   .formAuthor {
     grid-area: author;
-    width: 300px;
+    width: 350px;
     height: 55px;
   }
 
   .formSynopsis {
     grid-area: synopsis;
-    width: 300px;
+    width: 350px;
     height: 129px;
   }
 
   .formGenre {
     grid-area: genre;
-    width: 300px;
+    width: 350px;
     height: 55px;
   }
   .formData {
     grid-area: data;
-    width: 300px;
+    width: 350px;
     height: 55px;
   }
 

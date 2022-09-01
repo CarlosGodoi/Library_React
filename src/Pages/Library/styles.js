@@ -111,10 +111,11 @@ export const ContainerBooks = styled.div`
   .book {
     width: 6.75rem;
     height: 9.68rem;
+    border: solid 1px red;
   }
 
   .title-book {
-    width: 90%;
+    width: 50%;
   }
 
   .title-book p {
