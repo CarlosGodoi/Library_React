@@ -1,5 +1,7 @@
 import { Button } from '@mui/material';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import allBooks from '../../../Services/GetAllBooks';
+import LendBook from '../LendBookModal';
 import { BgModal, ContainerModal } from './styles';
 
 interface IProps {
@@ -8,9 +10,17 @@ interface IProps {
 }
 
 const BookModal = ({ closeModal, open }: IProps) => {
+  const [lendBookModal, setLendBookModal] = useState(false);
+
   const modalClosed = () => {
     closeModal();
   };
+
+  useEffect(() => {
+    allBooks()
+      .then((res: any) => console.log(res))
+      .catch((err) => console.log(err));
+  }, []);
   return open ? (
     <BgModal>
       <ContainerModal>
@@ -19,14 +29,21 @@ const BookModal = ({ closeModal, open }: IProps) => {
         </div>
         <div className="container-main">
           <div className="container-img-btn">
-            <div className="img-book"></div>
+            <div className="img-book">
+              <img src="" alt="" />
+            </div>
             <div className="container-btn">
-              <Button className="btn-lend">Emprestar</Button>
+              <Button
+                className="btn-lend"
+                onClick={() => setLendBookModal(true)}
+              >
+                Emprestar
+              </Button>
             </div>
           </div>
           <div className="container-contentBook-btns">
             <div className="title">
-              <h2>titulo</h2>
+              <h2>Titulo</h2>
             </div>
             <div className="data-book">
               <h3>Sinopse</h3>
@@ -45,6 +62,12 @@ const BookModal = ({ closeModal, open }: IProps) => {
             </div>
           </div>
         </div>
+        <LendBook
+          open={lendBookModal}
+          closeModal={() => {
+            setLendBookModal(false);
+          }}
+        />
       </ContainerModal>
     </BgModal>
   ) : (

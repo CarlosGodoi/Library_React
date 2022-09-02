@@ -38,12 +38,12 @@ export const ContainerMain = styled.div`
 `;
 
 export const ContainerForm = styled.div`
-  width: 75%;
-  margin: 1.8rem auto;
-  padding: 1.5rem 1.5rem;
+  width: 95%;
+  margin: 0 auto;
+  padding: 6rem 0;
   display: grid;
   grid-gap: 1.2rem;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   grid-template-areas:
     'image title author'
@@ -144,10 +144,5 @@ export const ContainerForm = styled.div`
       border: solid 1.5px #ffc501;
       transition: 0.5s;
     }
-  }
-
-  // media queries
-  @media (max-width: 1000px) {
-    width: 50%;
   }
 `;

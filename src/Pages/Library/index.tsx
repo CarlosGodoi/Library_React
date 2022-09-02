@@ -12,6 +12,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import allBooks from '../../Services/GetAllBooks';
 import BookModal from '../../Components/Modals/BookModal';
+import LendBook from '../../Components/Modals/LendBookModal';
 
 const Library = () => {
   const [books, setBooks] = useState([]);
