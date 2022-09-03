@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../../Components/Header';
 import { ContainerBg, ContainerForm, ContainerMain } from './styles';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
@@ -7,21 +7,16 @@ import { Button, TextField } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
 import { useFormik } from 'formik';
 import { initialValues, validationSchema } from './validation';
-import createBook from '../../Services/CreateBook';
 import { IBook } from './interface';
+import add from '../../Assets/styleImages/add_capa.svg';
 
 const AddBook = () => {
   const navigate = useNavigate();
   const [baseImage, setBaseImage] = useState<unknown>('');
-  const [newBook, setNewBook] = useState([]);
-  console.log(newBook);
 
-  const addNewBook = (values: IBook) => {
+  const addNewBook = () => {
     // eslint-disable-next-line no-restricted-globals
     event?.preventDefault();
-    createBook(values)
-      .then((res) => setNewBook(res))
-      .catch((err) => console.log(err));
   };
 
   const formik = useFormik({
@@ -29,7 +24,7 @@ const AddBook = () => {
     validationSchema,
     onSubmit(values: IBook) {
       UploadImage(values);
-      addNewBook(values);
+      addNewBook();
     },
   });
 
@@ -65,7 +60,7 @@ const AddBook = () => {
         </div>
 
         <ContainerForm>
-          <form onSubmit={formik.handleSubmit}>
+          <form className="form-addBook">
             <div
               className="formImage"
               style={{ backgroundImage: `url(${baseImage})` }}
@@ -79,6 +74,10 @@ const AddBook = () => {
                   value={formik.values.baseImage}
                   onChange={(e) => UploadImage(e)}
                 />
+                <div className="imgAdd-title">
+                  <img src={add} alt="Imagem adicionar" />
+                  <p>Capa</p>
+                </div>
               </label>
             </div>
 

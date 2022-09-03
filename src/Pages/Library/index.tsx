@@ -15,6 +15,8 @@ import BookModal from '../../Components/Modals/BookModal';
 import LendBook from '../../Components/Modals/LendBookModal';
 import { getBookImage } from '../../utils/getImage';
 import { TBook } from '../../interfaces/books';
+import InactivateBookModal from '../../Components/Modals/inactivateModal';
+import LoanBookModal from '../../Components/Modals/LoanModal';
 
 const Library = () => {
   const [books, setBooks] = useState<TBook[]>([]);
@@ -23,6 +25,8 @@ const Library = () => {
   const [modalBook, setModalBook] = useState(false);
   const [selectedBook, setSelectedBook] = useState<TBook>({} as TBook);
   const [modalLendBook, setModalLendBook] = useState(false);
+  const [modalInactiveBook, setModalInactiveBook] = useState(false);
+  const [modalLoanBook, setModalLoanBook] = useState(false);
 
   useEffect(() => {
     allBooks()
@@ -38,6 +42,19 @@ const Library = () => {
   const openLendModal = () => {
     setModalBook(false);
     setModalLendBook(true);
+  };
+
+  const openInactiveModal = () => {
+    setModalBook(false);
+    setModalLendBook(false);
+    setModalInactiveBook(true);
+  };
+
+  const openLoanModal = () => {
+    setModalBook(false);
+    setModalLendBook(false);
+    setModalInactiveBook(false);
+    setModalLoanBook(true);
   };
 
   return (
@@ -98,11 +115,21 @@ const Library = () => {
               selectedBook={selectedBook}
               onClickEdit={opeModalEdit}
               onClickLend={openLendModal}
+              onClickInactive={openInactiveModal}
+              onClickLoan={openLoanModal}
               closeModal={() => setModalBook(false)}
             />
             <LendBook
               closeModal={() => setModalLendBook(false)}
               open={modalLendBook}
+            />
+            <InactivateBookModal
+              open={modalInactiveBook}
+              closeModal={() => setModalInactiveBook(false)}
+            />
+            <LoanBookModal
+              open={modalLoanBook}
+              closeModal={() => setModalLoanBook(false)}
             />
           </ContainerBooks>
         </SearchBooks>

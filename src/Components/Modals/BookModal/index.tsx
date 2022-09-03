@@ -10,6 +10,8 @@ interface IProps {
   selectedBook: TBook;
   onClickEdit: VoidFunction;
   onClickLend: VoidFunction;
+  onClickInactive: VoidFunction;
+  onClickLoan: VoidFunction;
 }
 
 const BookModal = ({
@@ -18,6 +20,8 @@ const BookModal = ({
   selectedBook,
   onClickEdit,
   onClickLend,
+  onClickInactive,
+  onClickLoan,
 }: IProps) => {
   const [bookData, setBookData] = useState<TBook>({} as TBook);
 
@@ -67,8 +71,12 @@ const BookModal = ({
               <Button className="btn-edit" onClick={onClickEdit}>
                 Editar
               </Button>
-              <Button className="btn-inactivate">Inativar</Button>
-              <Button className="btn-history">Historico</Button>
+              <Button className="btn-inactivate" onClick={onClickInactive}>
+                Inativar
+              </Button>
+              <Button className="btn-history" onClick={onClickLoan}>
+                Historico
+              </Button>
             </div>
           </div>
         </div>

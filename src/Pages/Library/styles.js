@@ -119,12 +119,12 @@ export const ContainerBooks = styled.div`
     height: 9.68rem;
   }
   .title-book {
-    width: 50%;
+    width: 6.88rem;
   }
 
   .title-book p {
     text-align: center;
-    font: normal normal 600 14px 'Roboto';
+    font: normal normal 600 13px 'Roboto';
     letter-spacing: 0px;
     color: #3e4756;
     opacity: 1;
