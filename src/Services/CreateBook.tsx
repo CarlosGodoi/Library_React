@@ -1,4 +1,6 @@
-const createBook = async () => {
+import { IBook } from '../Pages/AddBook/interface';
+
+const createBook = async (values: IBook) => {
   let data;
 
   return fetch('./data.json')

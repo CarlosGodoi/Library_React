@@ -13,18 +13,32 @@ import Select from '@mui/material/Select';
 import allBooks from '../../Services/GetAllBooks';
 import BookModal from '../../Components/Modals/BookModal';
 import LendBook from '../../Components/Modals/LendBookModal';
+import { getBookImage } from '../../utils/getImage';
+import { TBook } from '../../interfaces/books';
 
 const Library = () => {
-  const [books, setBooks] = useState([]);
+  const [books, setBooks] = useState<TBook[]>([]);
   const navigate = useNavigate();
 
   const [modalBook, setModalBook] = useState(false);
+  const [selectedBook, setSelectedBook] = useState<TBook>({} as TBook);
+  const [modalLendBook, setModalLendBook] = useState(false);
 
   useEffect(() => {
     allBooks()
       .then((res: any) => setBooks(res))
       .catch((err) => console.log(err));
   }, []);
+
+  const opeModalEdit = () => {
+    setModalBook(false);
+    navigate('/tela-edicao', { state: 'book' });
+  };
+
+  const openLendModal = () => {
+    setModalBook(false);
+    setModalLendBook(true);
+  };
 
   return (
     <ContainerBg>
@@ -60,17 +74,18 @@ const Library = () => {
             </div>
           </div>
           <ContainerBooks>
-            {books.map((book: any, i) => {
+            {books.map((book: TBook, i) => {
               return (
                 <div
                   className="container-book"
                   key={i}
                   onClick={() => {
+                    setSelectedBook(book);
                     setModalBook(true);
                   }}
                 >
                   <div className="book">
-                    <img src={book.image} alt="Imagem do livro" />
+                    <img src={getBookImage(book.image)} alt="Imagem do livro" />
                   </div>
                   <div className="title-book">
                     <p>{book.tittle}</p>
@@ -80,9 +95,14 @@ const Library = () => {
             })}
             <BookModal
               open={modalBook}
-              closeModal={() => {
-                setModalBook(false);
-              }}
+              selectedBook={selectedBook}
+              onClickEdit={opeModalEdit}
+              onClickLend={openLendModal}
+              closeModal={() => setModalBook(false)}
+            />
+            <LendBook
+              closeModal={() => setModalLendBook(false)}
+              open={modalLendBook}
             />
           </ContainerBooks>
         </SearchBooks>

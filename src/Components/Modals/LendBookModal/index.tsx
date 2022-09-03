@@ -1,6 +1,4 @@
 import { Button, TextField } from '@mui/material';
-import React, { useState } from 'react';
-import BookModal from '../BookModal';
 import { BgModal, ContainerModal } from './styles';
 
 interface IProps {

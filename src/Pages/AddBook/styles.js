@@ -59,9 +59,28 @@ export const ContainerForm = styled.div`
     align-items: center;
     border: dashed 2px #ffc501;
     grid-area: image;
+    background: no-repeat;
+    background-size: cover;
+    background-position: center;
   }
 
-  .customFileInput::-webkit-file-upload-button {
+  .labelUpload {
+    width: 10.75rem;
+    height: 14.5rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+    background: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+  }
+
+  .customFileInput {
+    display: none;
+  }
+
+  /* .customFileInput::-webkit-file-upload-button {
     visibility: hidden;
   }
 
@@ -78,7 +97,7 @@ export const ContainerForm = styled.div`
     background: no-repeat;
     color: #ffc501;
     cursor: pointer;
-  }
+  } */
 
   .formTitle {
     grid-area: title;

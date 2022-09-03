@@ -23,7 +23,7 @@
           "isActive": false,
           "description": "desativado porque estragou"
         },
-        "image": "../Assets/Books/livro01.png",
+        "image": "../../Assets/Books/livro01.png",
         "systemEntryDate": "02/01/2020",
         "synopsis": "Mussum Ipsum, cacilds vidis litro abertis. In elementis mé pra quem é amistosis quis leo.Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi.Quem num gosta di mé, boa gentis num é.Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.",
         "rentHistory": [
@@ -49,7 +49,7 @@
           "isActive": true,
           "description": ""
         },
-        "image": "../src/Assets/livro02.png",
+        "image": "../../src/Assets/livro02.png",
         "systemEntryDate": "02/01/2020",
         "synopsis": "Mussum Ipsum, cacilds vidis litro abertis. In elementis mé pra quem é amistosis quis leo.Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi.Quem num gosta di mé, boa gentis num é.Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.",
         "rentHistory": []

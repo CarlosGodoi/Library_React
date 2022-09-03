@@ -1,51 +1,37 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Header from '../../Components/Header';
 import { ContainerBg, ContainerForm, ContainerMain } from './styles';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useNavigate } from 'react-router-dom';
 import { Button, TextField } from '@mui/material';
-import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
-import allBooks from '../../Services/GetAllBooks';
 import { useFormik } from 'formik';
 import { initialValues, validationSchema } from './validation';
 import createBook from '../../Services/CreateBook';
-
-interface IBook {
-  author: string;
-  genre: string;
-  image: string;
-  rentHistory: Array<any>;
-  status: object;
-  synopsis: string;
-  systemEntryDate: string;
-  tittle: string;
-  baseImage: string;
-}
+import { IBook } from './interface';
 
 const AddBook = () => {
   const navigate = useNavigate();
   const [baseImage, setBaseImage] = useState<unknown>('');
+  const [newBook, setNewBook] = useState([]);
+  console.log(newBook);
 
   const addNewBook = (values: IBook) => {
     // eslint-disable-next-line no-restricted-globals
     event?.preventDefault();
-    createBook()
-      .then((res) => navigate('/biblioteca'))
+    createBook(values)
+      .then((res) => setNewBook(res))
       .catch((err) => console.log(err));
   };
 
   const formik = useFormik({
     initialValues,
-    // validationSchema,
+    validationSchema,
     onSubmit(values: IBook) {
       UploadImage(values);
       addNewBook(values);
     },
   });
-
-  console.log(formik.errors);
 
   const UploadImage = async (e: any) => {
     const file = e.target.files[0];
@@ -79,93 +65,98 @@ const AddBook = () => {
         </div>
 
         <ContainerForm>
-          <div
-            className="formImage"
-            style={{ backgroundImage: `url(${baseImage})` }}
-          >
-            <input
-              className="customFileInput"
-              type="file"
-              name="image"
-              id="image"
-              value={formik.values.baseImage}
-              onChange={formik.handleChange}
-            />
-          </div>
-
-          <div className="formTitle">
-            <TextField
-              margin="dense"
-              fullWidth
-              name="tittle"
-              id="tittle"
-              label="Titulo"
-              variant="outlined"
-              value={formik.values.tittle}
-              onChange={formik.handleChange}
-            />
-          </div>
-          <div className="formAuthor">
-            <TextField
-              margin="dense"
-              fullWidth
-              name="author"
-              id="author"
-              label="Autor"
-              variant="outlined"
-              value={formik.values.author}
-              onChange={formik.handleChange}
-            />
-          </div>
-          <div className="formSynopsis">
-            <TextField
-              margin="dense"
-              multiline
-              fullWidth
-              rows={4}
-              name="synopsis"
-              id="synopsis"
-              label="Sinopse"
-              variant="outlined"
-              value={formik.values.synopsis}
-              onChange={formik.handleChange}
-            />
-          </div>
-          <div className="formGenre">
-            <InputLabel>Gênero</InputLabel>
-            <Select
-              fullWidth
-              name="genre"
-              id="genre"
-              label="genero"
-              value={formik.values.genre}
-              onChange={formik.handleChange}
+          <form onSubmit={formik.handleSubmit}>
+            <div
+              className="formImage"
+              style={{ backgroundImage: `url(${baseImage})` }}
             >
-              <MenuItem>Fantasia</MenuItem>
-              <MenuItem>Ação e Aventura</MenuItem>
-              <MenuItem>Horror</MenuItem>
-              <MenuItem>Romance</MenuItem>
-            </Select>
-          </div>
-          <div className="formData">
-            <TextField
-              fullWidth
-              name="systemEntryDate"
-              id="systemEntryDate"
-              label="Data de entrada"
-              variant="outlined"
-              value={formik.values.systemEntryDate}
-              onChange={formik.handleChange}
-            />
-          </div>
-          <div className="buttons-form">
-            <Button type="reset" className="btn-cancel">
-              Cancelar
-            </Button>
-            <Button type="submit" className="btn-save">
-              Salvar
-            </Button>
-          </div>
+              <label htmlFor="image" className="labelUpload">
+                <input
+                  className="customFileInput"
+                  type="file"
+                  name="image"
+                  id="image"
+                  value={formik.values.baseImage}
+                  onChange={(e) => UploadImage(e)}
+                />
+              </label>
+            </div>
+
+            <div className="formTitle">
+              <TextField
+                margin="dense"
+                fullWidth
+                name="tittle"
+                id="tittle"
+                label="Titulo"
+                variant="outlined"
+                value={formik.values.tittle}
+                onChange={formik.handleChange}
+              />
+            </div>
+            <div className="formAuthor">
+              <TextField
+                margin="dense"
+                fullWidth
+                name="author"
+                id="author"
+                label="Autor"
+                variant="outlined"
+                value={formik.values.author}
+                onChange={formik.handleChange}
+              />
+            </div>
+            <div className="formSynopsis">
+              <TextField
+                margin="dense"
+                multiline
+                fullWidth
+                rows={4}
+                name="synopsis"
+                id="synopsis"
+                label="Sinopse"
+                variant="outlined"
+                value={formik.values.synopsis}
+                onChange={formik.handleChange}
+              />
+            </div>
+            <div className="formGenre">
+              <TextField
+                select
+                fullWidth
+                margin="dense"
+                name="genre"
+                id="genre"
+                label="genero"
+                value={formik.values.genre}
+                onChange={formik.handleChange}
+              >
+                <MenuItem value="Fantasia">Fantasia</MenuItem>
+                <MenuItem value="Ação e Aventura">Ação e Aventura</MenuItem>
+                <MenuItem value="Horror">Horror</MenuItem>
+                <MenuItem value="Romance">Romance</MenuItem>
+              </TextField>
+            </div>
+            <div className="formData">
+              <TextField
+                fullWidth
+                name="systemEntryDate"
+                id="systemEntryDate"
+                label="Data de entrada"
+                variant="outlined"
+                value={formik.values.systemEntryDate}
+                onChange={formik.handleChange}
+              />
+            </div>
+            <div className="buttons-form">
+              <Button className="btn-cancel" onClick={() => navigate('/home')}>
+                Cancelar
+              </Button>
+              <Button type="submit" className="btn-save">
+                Salvar
+              </Button>
+            </div>
+          </form>
         </ContainerForm>
       </ContainerMain>
     </ContainerBg>

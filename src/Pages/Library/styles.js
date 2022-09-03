@@ -111,9 +111,13 @@ export const ContainerBooks = styled.div`
   .book {
     width: 6.75rem;
     height: 9.68rem;
-    border: solid 1px red;
   }
 
+  .book img {
+    background-size: cover;
+    width: 6.75rem;
+    height: 9.68rem;
+  }
   .title-book {
     width: 50%;
   }

@@ -21,14 +21,15 @@ export const ContainerModal = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   display: block;
+  padding: 10px;
 
   .container-exit {
-    width: 95%;
+    width: 100%;
     height: 2.5rem;
     margin: 0 auto;
     display: flex;
-    justify-content: end;
     align-items: center;
+    justify-content: flex-end;
   }
 
   .container-exit p {
@@ -43,22 +44,27 @@ export const ContainerModal = styled.div`
   }
 
   .container-img-btn {
-    width: 40%;
+    width: 29.7rem;
     height: 75vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    border: solid 1px green;
   }
 
   .img-book {
-    width: 80%;
-    height: 55vh;
+    width: 17rem;
     margin: 0 auto;
-    border: solid 1px black;
+  }
+
+  .img-book img {
+    width: 17rem;
+    height: 340px;
+    object-fit: contain;
   }
 
   .container-btn {
-    width: 80%;
+    width: 14rem;
     height: 50px;
     margin: 0 auto;
     border-radius: 5px;
@@ -77,19 +83,24 @@ export const ContainerModal = styled.div`
   }
 
   .container-contentBook-btns {
-    width: 60%;
-    height: 74vh;
+    width: 26.5rem;
+    height: 19.82rem;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
+    border: solid 1px purple;
   }
 
   .title {
-    width: 100%;
+    width: 26.5rem;
+    height: 3.312rem;
+    margin: 0 auto;
+    border: solid 1px blue;
   }
   .title h2 {
     text-align: center;
-    font: normal normal 600 26px 'Roboto';
+    font: normal normal 600 1.25rem 'Roboto';
     letter-spacing: 0px;
     color: #3e4756;
     opacity: 1;
@@ -97,11 +108,12 @@ export const ContainerModal = styled.div`
 
   .data-book {
     width: 100%;
+    border: solid 1px red;
   }
 
   .container-contentBook-btns h3 {
     text-align: left;
-    font: normal normal 600 16px/21px 'Roboto';
+    font: normal normal 600 1rem 'Roboto';
     letter-spacing: 0px;
     color: #3e4756;
     opacity: 1;
@@ -109,17 +121,23 @@ export const ContainerModal = styled.div`
 
   .container-contentBook-btns p {
     text-align: left;
-    font: normal normal 300 16px/21px 'Roboto';
+    font: normal normal 300 0.87rem 'Roboto';
     letter-spacing: 0px;
     color: #3e4756;
     opacity: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .btns-Modal {
-    width: 80%;
+    width: 26.5rem;
     margin: 0 auto;
     display: flex;
     justify-content: space-around;
+    border: solid red 1px;
   }
 
   .btn-edit {
