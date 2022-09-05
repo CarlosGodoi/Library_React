@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from '../../Components/Header';
 import { Card, ContainerBg, Main } from './styles';
 import add from '../../Assets/styleImages/add_circle.svg';
 import contact from '../../Assets/styleImages/contacts.svg';
@@ -10,7 +9,6 @@ const Home = () => {
   const navigate = useNavigate();
   return (
     <ContainerBg>
-      <Header />
       <Main>
         <Card>
           <div className="img-card" onClick={() => navigate('/cadastrarLivro')}>

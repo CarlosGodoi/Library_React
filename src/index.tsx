@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { UserProvider } from './Components/Context/UserContext';
 import './index.css';
 import MainRoutes from './Routes/MainRoutes';
 
@@ -8,6 +9,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <MainRoutes />
+    <UserProvider>
+      <MainRoutes />
+    </UserProvider>
   </React.StrictMode>,
 );

@@ -2,13 +2,12 @@ import styled from 'styled-components';
 
 export const ContainerBg = styled.div`
   width: 100%;
-  padding-bottom: 1rem;
   background-color: #f4f4f4;
 `;
 
 export const ContainerMain = styled.div`
   max-width: 95%;
-  margin: 0.7rem auto;
+  margin: 0 auto;
   background-color: #fff;
 
   .back-home {
@@ -96,7 +95,7 @@ export const ContainerBooks = styled.div`
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  gap: 1.3rem;
+  gap: 1rem;
   padding: 1rem 0;
   margin: 0 auto;
 

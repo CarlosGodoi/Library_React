@@ -2,14 +2,13 @@ import styled from '@emotion/styled';
 
 export const ContainerBg = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 90vh;
   padding-bottom: 1rem;
   background-color: #f4f4f4;
 `;
 
 export const ContainerMain = styled.div`
   max-width: 95%;
-  height: 100vh;
   max-height: 82%;
   background-color: #fff;
   margin: 1rem auto;

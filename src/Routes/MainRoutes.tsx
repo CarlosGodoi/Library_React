@@ -1,22 +1,42 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import AddBook from '../Pages/AddBook';
-import EditBook from '../Pages/EditBook';
-import Home from '../Pages/Home';
-import Library from '../Pages/Library';
-import LoanHistory from '../Pages/LoanHistory';
-import Login from '../Pages/Login';
+import { useAuth } from '../Components/Context/UserContext';
+import Header from '../Components/Header';
+import { routes } from './Routes';
 
 const MainRoutes = () => {
+  function RouteVerification({ element }: any) {
+    const {
+      user: { email },
+    } = useAuth();
+
+    const logged = Boolean(email);
+    return logged ? (
+      <>
+        <Header />
+        {element}
+      </>
+    ) : (
+      <h1>Acesso Negado</h1>
+    );
+  }
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/cadastrarLivro" element={<AddBook />} />
-        <Route path="/biblioteca" element={<Library />} />
-        <Route path="/historicoEmprestimo" element={<LoanHistory />} />
-        <Route path="/editarLivro" element={<EditBook />} />
+        {routes.map((route) => (
+          <Route
+            key={route.path}
+            path={route.path}
+            element={
+              route.private ? (
+                <RouteVerification element={route.element} />
+              ) : (
+                route.element
+              )
+            }
+          />
+        ))}
       </Routes>
     </BrowserRouter>
   );

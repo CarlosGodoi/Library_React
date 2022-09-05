@@ -21,7 +21,6 @@ const LoanHistory = () => {
   }, []);
   return (
     <ContainerBg>
-      <Header />
       <ContainerMain>
         <div className="back-home" onClick={() => navigate('/home')}>
           <ArrowBackIosIcon fontSize="small" />

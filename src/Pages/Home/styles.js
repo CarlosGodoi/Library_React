@@ -2,15 +2,14 @@ import styled from 'styled-components';
 
 export const ContainerBg = styled.div`
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 5rem);
   background-color: #f4f4f4;
 `;
 
 export const Main = styled.div`
   max-width: 95%;
-  height: 100vh;
-  max-height: 82%;
-  margin: 1rem auto;
+  height: 85vh;
+  margin: 0 auto;
   background-color: #fff;
   display: flex;
   justify-content: center;

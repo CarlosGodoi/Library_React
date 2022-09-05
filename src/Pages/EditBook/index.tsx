@@ -52,7 +52,6 @@ const EditBook = () => {
   });
   return (
     <ContainerBg>
-      <Header />
       <ContainerMain>
         <div className="back-home" onClick={() => navigate('/biblioteca')}>
           <ArrowBackIosIcon fontSize="small" />

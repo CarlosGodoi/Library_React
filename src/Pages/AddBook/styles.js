@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const ContainerBg = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 90vh;
   background-color: #f4f4f4;
 `;
 
@@ -100,25 +100,6 @@ export const ContainerForm = styled.div`
   .customFileInput {
     display: none;
   }
-
-  /* .customFileInput::-webkit-file-upload-button {
-    visibility: hidden;
-  }
-
-  .customFileInput::before {
-    width: 95%;
-    max-height: 600px;
-    min-height: 200px;
-    font-size: 11pt;
-    content: 'FOTO';
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    background: transparent;
-    background: no-repeat;
-    color: #ffc501;
-    cursor: pointer;
-  } */
 
   .formTitle {
     grid-area: title;

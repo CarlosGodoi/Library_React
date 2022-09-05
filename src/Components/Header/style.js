@@ -2,15 +2,15 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
-  padding: 1rem 0;
+  height: 5rem;
   background-color: #ffffff;
 `;
 
 export const ContainerHeader = styled.div`
   width: 95%;
   margin: 0 auto;
-  height: 50px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
 
   .menu-user {
