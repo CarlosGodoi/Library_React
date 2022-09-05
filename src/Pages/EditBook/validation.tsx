@@ -1,14 +1,24 @@
 import { string, boolean, number, object, array } from 'yup';
 
 export const validationSchema = {
-  tittle: string(),
   author: string(),
   genre: string(),
-  status: object(),
   image: string(),
-  systemEntryDate: string(),
+  rentHistory: array().of(
+    object().shape({
+      studentName: string(),
+      class: string(),
+      withdrawalDate: string(),
+      deliveryDate: string(),
+    }),
+  ),
+  status: object().shape({
+    isActive: boolean(),
+    description: string(),
+  }),
   synopsis: string(),
-  rentHistory: array(),
+  systemEntryDate: string(),
+  tittle: string(),
   baseImage: string(),
 };
 

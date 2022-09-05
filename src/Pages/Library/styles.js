@@ -59,7 +59,12 @@ export const SearchBooks = styled.div`
 
   .input-search input {
     width: 80%;
+    height: 40px;
     border: none;
+    :focus {
+      box-shadow: 0 0 0 0;
+      outline: 0;
+    }
   }
 
   .input-search button {

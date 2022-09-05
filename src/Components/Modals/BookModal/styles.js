@@ -15,7 +15,6 @@ export const ContainerModal = styled.div`
   background-color: #ffffff;
   border-radius: 5px;
   width: 60%;
-  height: 85vh;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -40,20 +39,21 @@ export const ContainerModal = styled.div`
   .container-main {
     width: 95%;
     margin: 0 auto;
+    padding-bottom: 2.5rem;
     display: flex;
   }
 
   .container-img-btn {
-    width: 29.7rem;
-    height: 75vh;
+    width: 40%;
+    padding: 2rem 0;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    border: solid 1px green;
   }
 
   .img-book {
     width: 17rem;
+    padding-bottom: 1rem;
     margin: 0 auto;
   }
 
@@ -64,11 +64,10 @@ export const ContainerModal = styled.div`
   }
 
   .container-btn {
-    width: 14rem;
+    width: 15rem;
     height: 50px;
     margin: 0 auto;
     border-radius: 5px;
-    border: solid 1px #adb5bd;
   }
 
   .btn-lend {
@@ -76,6 +75,7 @@ export const ContainerModal = styled.div`
     height: 50px;
     background-color: #ffc501;
     border-radius: 5px;
+    border: solid 1px #adb5bd;
     font: normal normal 600 16px/21px 'Roboto';
     letter-spacing: 0px;
     color: #000000;
@@ -83,20 +83,15 @@ export const ContainerModal = styled.div`
   }
 
   .container-contentBook-btns {
-    width: 26.5rem;
-    height: 19.82rem;
+    width: 60%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    border: solid 1px purple;
   }
 
   .title {
     width: 26.5rem;
-    height: 3.312rem;
     margin: 0 auto;
-    border: solid 1px blue;
   }
   .title h2 {
     text-align: center;
@@ -108,7 +103,7 @@ export const ContainerModal = styled.div`
 
   .data-book {
     width: 100%;
-    border: solid 1px red;
+    padding-bottom: 1.5rem;
   }
 
   .container-contentBook-btns h3 {
@@ -137,7 +132,6 @@ export const ContainerModal = styled.div`
     margin: 0 auto;
     display: flex;
     justify-content: space-around;
-    border: solid red 1px;
   }
 
   .btn-edit {

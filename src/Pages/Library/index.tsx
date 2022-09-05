@@ -17,9 +17,11 @@ import { getBookImage } from '../../utils/getImage';
 import { TBook } from '../../interfaces/books';
 import InactivateBookModal from '../../Components/Modals/inactivateModal';
 import LoanBookModal from '../../Components/Modals/LoanModal';
+import { IBook } from '../AddBook/interface';
 
 const Library = () => {
   const [books, setBooks] = useState<TBook[]>([]);
+  const [booksOriginals, setBooksOriginals] = useState<TBook[]>([]);
   const navigate = useNavigate();
 
   const [modalBook, setModalBook] = useState(false);
@@ -28,15 +30,21 @@ const Library = () => {
   const [modalInactiveBook, setModalInactiveBook] = useState(false);
   const [modalLoanBook, setModalLoanBook] = useState(false);
 
+  const [descriptionBook, setDescriptionBook] = useState<string>('');
+  const [inputSearch, setInputSearch] = useState('');
+
   useEffect(() => {
     allBooks()
-      .then((res: any) => setBooks(res))
+      .then((res: any) => {
+        setBooks(res);
+        setBooksOriginals(res);
+      })
       .catch((err) => console.log(err));
   }, []);
 
   const opeModalEdit = () => {
     setModalBook(false);
-    navigate('/tela-edicao', { state: 'book' });
+    navigate('/editarLivro', { state: 'book' });
   };
 
   const openLendModal = () => {
@@ -57,6 +65,27 @@ const Library = () => {
     setModalLoanBook(true);
   };
 
+  function filterBooks() {
+    // eslint-disable-next-line no-restricted-globals
+    event?.preventDefault();
+    let bookFilter = inputSearch;
+    let bookAttribute = descriptionBook;
+
+    if (bookFilter !== '' && bookAttribute !== '') {
+      switch (bookAttribute) {
+        case 'genre':
+          setBooks(
+            booksOriginals.filter((book) => {
+              let bookAuthor = book.genre.toUpperCase().includes(bookFilter);
+              return bookAuthor;
+            }),
+          );
+          break;
+      }
+      console.log(bookFilter);
+    }
+  }
+
   return (
     <ContainerBg>
       <Header />
@@ -68,28 +97,32 @@ const Library = () => {
         </div>
 
         <SearchBooks>
-          <div className="container">
-            <form className="input-search">
+          <form
+            className="container"
+            onSubmit={() => {
+              console.log('fui chamado');
+              filterBooks();
+            }}
+          >
+            <div className="input-search">
               <input type="text" placeholder="Pesquisar livro..." />
-              <button type="button">Buscar</button>
-            </form>
+              <button type="submit">Buscar</button>
+            </div>
             <div className="select-search">
               <Select
-                labelId="options"
-                id="options"
-                value=""
-                label=""
+                onChange={(e) => setDescriptionBook(e.target.value)}
+                value={descriptionBook}
                 fullWidth
                 size="small"
               >
                 <MenuItem disabled>Selecione</MenuItem>
-                <MenuItem>Gênero</MenuItem>
-                <MenuItem>Author</MenuItem>
-                <MenuItem>Data de entrada</MenuItem>
-                <MenuItem> Sinopse</MenuItem>
+                <MenuItem value="genre">Gênero</MenuItem>
+                <MenuItem value="author">Autor</MenuItem>
+                <MenuItem value="withdrawalDate">Data de entrada</MenuItem>
+                <MenuItem value="synopsis"> Sinopse</MenuItem>
               </Select>
             </div>
-          </div>
+          </form>
           <ContainerBooks>
             {books.map((book: TBook, i) => {
               return (
