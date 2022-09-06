@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../../Components/Header';
 import { ContainerBg, ContainerMain, ContainerTable } from './styles';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import MaterialTable from 'material-table';

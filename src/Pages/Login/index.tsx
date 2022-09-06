@@ -9,10 +9,12 @@ import { validationSchema, initialValues } from './validation';
 import { ILogin } from './interface';
 import Loading from '../../Components/Loading';
 import { useAuth } from '../../Components/Context/UserContext';
+import { useMessage } from '../../Components/Context/MessageContext';
 
 const Login = () => {
   const navigate = useNavigate();
   const { handleLogin } = useAuth();
+  const { setMessage } = useMessage();
 
   const formik = useFormik({
     initialValues,
@@ -22,7 +24,13 @@ const Login = () => {
         .then((resp) => {
           if (resp === true) navigate('/home');
         })
-        .catch((err) => console.log(err));
+        .catch((err) =>
+          setMessage({
+            content: `O seguinte erro ocorreu: ${err}`,
+            display: true,
+            severity: 'error',
+          }),
+        );
     },
   });
 
@@ -42,6 +50,8 @@ const Login = () => {
             label="Email"
             variant="outlined"
             onChange={formik.handleChange}
+            error={Boolean(formik.touched.email && formik.errors.email)}
+            helperText={formik.touched.email && formik.errors.email}
           />
           <TextField
             margin="dense"
@@ -52,6 +62,8 @@ const Login = () => {
             label="Senha"
             variant="outlined"
             onChange={formik.handleChange}
+            error={Boolean(formik.touched.password && formik.errors.password)}
+            helperText={formik.touched.password && formik.errors.password}
           />
 
           <div className="ForgotIt">
