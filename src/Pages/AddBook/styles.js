@@ -66,7 +66,14 @@ export const ContainerForm = styled.div`
     background-position: center;
   }
 
-  .imgAdd-title {
+  .image-base64 {
+    width: 10.75rem;
+    height: 14.5rem;
+    object-fit: cover;
+    cursor: pointer;
+  }
+
+  /* .imgAdd-title {
     width: 5rem;
     display: flex;
     justify-content: center;
@@ -84,7 +91,7 @@ export const ContainerForm = styled.div`
     letter-spacing: 0px;
     color: #ffc501;
     opacity: 1;
-  }
+  } */
 
   .labelUpload {
     width: 10.75rem;

@@ -1,4 +1,5 @@
-interface IBook {
+interface IEditBook {
+  id: string;
   author: string;
   genre: string;
   image: string;
@@ -7,7 +8,6 @@ interface IBook {
   synopsis: string;
   systemEntryDate: string;
   tittle: string;
-  baseImage: string;
 }
 
-export type { IBook };
+export type { IEditBook };

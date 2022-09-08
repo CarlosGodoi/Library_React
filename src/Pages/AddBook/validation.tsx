@@ -1,6 +1,7 @@
 import { string, boolean, number, object, array } from 'yup';
 
 export const validationSchema = {
+  id: string(),
   tittle: string(),
   author: string(),
   genre: string(),
@@ -9,10 +10,10 @@ export const validationSchema = {
   systemEntryDate: string(),
   synopsis: string(),
   rentHistory: array(),
-  baseImage: string(),
 };
 
 export const initialValues = {
+  id: '',
   author: '',
   genre: '',
   image: '',
@@ -21,5 +22,4 @@ export const initialValues = {
   synopsis: '',
   systemEntryDate: '',
   tittle: '',
-  baseImage: '',
 };

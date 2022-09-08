@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Header from '../../Components/Header';
 import {
   ContainerBg,
   ContainerBooks,
@@ -10,19 +9,19 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useNavigate } from 'react-router-dom';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-import allBooks from '../../Services/GetAllBooks';
 import BookModal from '../../Components/Modals/BookModal';
 import LendBook from '../../Components/Modals/LendBookModal';
 import { getBookImage } from '../../utils/getImage';
 import { TBook } from '../../interfaces/books';
 import InactivateBookModal from '../../Components/Modals/inactivateModal';
 import LoanBookModal from '../../Components/Modals/LoanModal';
-import { IBook } from '../AddBook/interface';
+import GetAllBooks from '../../Services/GetAllBooks';
 
 const Library = () => {
   const [books, setBooks] = useState<TBook[]>([]);
   const [booksOriginals, setBooksOriginals] = useState<TBook[]>([]);
   const navigate = useNavigate();
+  console.log(books);
 
   const [modalBook, setModalBook] = useState(false);
   const [selectedBook, setSelectedBook] = useState<TBook>({} as TBook);
@@ -34,12 +33,12 @@ const Library = () => {
   const [inputSearch, setInputSearch] = useState('');
 
   useEffect(() => {
-    allBooks()
+    GetAllBooks()
       .then((res: any) => {
         setBooks(res);
         setBooksOriginals(res);
       })
-      .catch((err) => console.log(err));
+      .catch((err: any) => console.log(err));
   }, []);
 
   const opeModalEdit = () => {
@@ -123,7 +122,7 @@ const Library = () => {
             </div>
           </form>
           <ContainerBooks>
-            {books.map((book: TBook, i) => {
+            {books?.map((book: TBook, i) => {
               return (
                 <div
                   className="container-book"

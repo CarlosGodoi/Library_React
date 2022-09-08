@@ -2,32 +2,37 @@ import React, { useState, useEffect } from 'react';
 import Header from '../../Components/Header';
 import { ContainerBg, ContainerForm, ContainerMain } from './styles';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Button, TextField } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
 import { initialValues, validationSchema } from './validation';
 import { useFormik } from 'formik';
-import allBooks from '../../Services/GetAllBooks';
-import { IBook } from './interface';
+import { IEditBook } from './interface';
+import GetAllBooks from '../../Services/GetAllBooks';
+import { IBook } from '../AddBook/interface';
 
 const EditBook = () => {
   const navigate = useNavigate();
-  const [baseImage, setBaseImage] = useState<unknown>('');
-  const [book, setBook] = useState<IBook | []>([]);
-  console.log(book);
+  const { id } = useParams();
+  const [books, setBooks] = useState<IBook | []>([]);
+  console.log(books);
 
   useEffect(() => {
-    allBooks()
+    GetAllBooks()
       .then((res) => {
-        setBook(res);
+        let chosenBook = res.find(
+          (book: IEditBook) => console.log(book.id) === id,
+        );
+        formik.setValues(chosenBook);
+        setBooks(res.map((book: IBook) => book));
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [id]);
 
   const UploadImage = async (e: any) => {
     const file = e.target.files[0];
     const base64 = await convertBase64(file);
-    setBaseImage(base64);
+    formik.setFieldValue('image', base64);
   };
 
   const convertBase64 = (file: File) => {
@@ -47,8 +52,8 @@ const EditBook = () => {
 
   const formik = useFormik({
     initialValues,
-    validationSchema,
-    onSubmit(values: IBook) {},
+    // validationSchema,
+    onSubmit(values: IEditBook) {},
   });
   return (
     <ContainerBg>
@@ -61,21 +66,18 @@ const EditBook = () => {
 
         <ContainerForm>
           <form className="form-addBook">
-            <div
-              className="formImage"
-              style={{ backgroundImage: `url(${baseImage})` }}
-            >
+            <div className="formImage">
               <label htmlFor="image" className="labelUpload">
                 <input
                   className="customFileInput"
                   type="file"
                   name="image"
                   id="image"
-                  value={formik.values.image}
-                  onChange={(e) => UploadImage(e)}
+                  value={''}
+                  onChange={UploadImage}
                 />
                 <div className="imgAdd-title">
-                  <img src={formik.values.image} alt="Imagem do livro" />
+                  <img src={formik.values.image} alt="" />
                   <p>Capa</p>
                 </div>
               </label>

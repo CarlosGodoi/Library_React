@@ -5,17 +5,20 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import MaterialTable from 'material-table';
 import loanHistory from '../../Services/loanHistory';
 import { ThemeProvider, createTheme } from '@mui/material';
+import api from '../../Services/api';
 
 const LoanHistory = () => {
   const navigate = useNavigate();
   const defaultMaterialTheme = createTheme();
 
+  const [books, setBooks] = useState([]);
   const [rentHistory, setRentHistory] = useState([]);
   console.log(rentHistory);
 
   useEffect(() => {
-    loanHistory()
-      .then((res: any) => setRentHistory(res))
+    api
+      .get('data')
+      .then((res: any) => console.log(res.data.books))
       .catch((err) => console.log(err));
   }, []);
   return (

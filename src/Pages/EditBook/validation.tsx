@@ -1,28 +1,19 @@
 import { string, boolean, number, object, array } from 'yup';
 
 export const validationSchema = {
+  id: string(),
   author: string(),
   genre: string(),
   image: string(),
-  rentHistory: array().of(
-    object().shape({
-      studentName: string(),
-      class: string(),
-      withdrawalDate: string(),
-      deliveryDate: string(),
-    }),
-  ),
-  status: object().shape({
-    isActive: boolean(),
-    description: string(),
-  }),
+  rentHistory: Array<any>,
+  status: object(),
   synopsis: string(),
   systemEntryDate: string(),
   tittle: string(),
-  baseImage: string(),
 };
 
 export const initialValues = {
+  id: '',
   author: '',
   genre: '',
   image: '',
@@ -31,5 +22,4 @@ export const initialValues = {
   synopsis: '',
   systemEntryDate: '',
   tittle: '',
-  baseImage: '',
 };

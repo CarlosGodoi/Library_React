@@ -47,11 +47,11 @@ export const ContainerModal = styled.div`
 
   .container-title {
     width: 100%;
-    margin: 0 auto;
+    margin: 0 auto 1rem;
   }
 
   .container-title > h2 {
-    font: normal normal medium 20px/26px 'Roboto';
+    font: normal normal 600 20px 'Roboto';
     letter-spacing: 0px;
     color: #3e4756;
     opacity: 1;

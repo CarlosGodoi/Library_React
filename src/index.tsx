@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { LoadingProvider } from './Components/Context/LoadingContext';
 import { MessageProvider } from './Components/Context/MessageContext';
 import { UserProvider } from './Components/Context/UserContext';
 import './index.css';
@@ -12,7 +13,9 @@ root.render(
   <React.StrictMode>
     <UserProvider>
       <MessageProvider>
-        <MainRoutes />
+        <LoadingProvider>
+          <MainRoutes />
+        </LoadingProvider>
       </MessageProvider>
     </UserProvider>
   </React.StrictMode>,

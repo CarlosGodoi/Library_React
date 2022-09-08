@@ -10,11 +10,13 @@ import { ILogin } from './interface';
 import Loading from '../../Components/Loading';
 import { useAuth } from '../../Components/Context/UserContext';
 import { useMessage } from '../../Components/Context/MessageContext';
+import { useLoading } from '../../Components/Context/LoadingContext';
 
 const Login = () => {
   const navigate = useNavigate();
   const { handleLogin } = useAuth();
   const { setMessage } = useMessage();
+  const { setLoading } = useLoading();
 
   const formik = useFormik({
     initialValues,
@@ -22,7 +24,13 @@ const Login = () => {
     onSubmit(values: ILogin) {
       handleLogin(values)
         .then((resp) => {
-          if (resp === true) navigate('/home');
+          if (resp === true)
+            setMessage({
+              content: 'Login realizado',
+              display: true,
+              severity: 'success',
+            });
+          navigate('/home');
         })
         .catch((err) =>
           setMessage({

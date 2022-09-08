@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import Header from '../../Components/Header';
+import React, { useState } from 'react';
 import { ContainerBg, ContainerForm, ContainerMain } from './styles';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useNavigate } from 'react-router-dom';
@@ -9,29 +8,32 @@ import { useFormik } from 'formik';
 import { initialValues, validationSchema } from './validation';
 import { IBook } from './interface';
 import add from '../../Assets/styleImages/add_capa.svg';
+import createBook from '../../Services/CreateBook';
 
 const AddBook = () => {
   const navigate = useNavigate();
-  const [baseImage, setBaseImage] = useState<unknown>('');
 
-  const addNewBook = () => {
-    // eslint-disable-next-line no-restricted-globals
-    event?.preventDefault();
+  const addNewBook = (values: IBook) => {
+    createBook(values)
+      .then((res: IBook) => {
+        console.log(res);
+        navigate('/biblioteca');
+      })
+      .catch((err) => console.log(err));
   };
 
   const formik = useFormik({
     initialValues,
     validationSchema,
     onSubmit(values: IBook) {
-      UploadImage(values);
-      addNewBook();
+      addNewBook(values);
     },
   });
 
   const UploadImage = async (e: any) => {
     const file = e.target.files[0];
-    const base64 = await convertBase64(file);
-    setBaseImage(base64);
+    const base64: any = await convertBase64(file);
+    formik.setFieldValue('image', base64);
   };
 
   const convertBase64 = (file: File) => {
@@ -59,24 +61,21 @@ const AddBook = () => {
         </div>
 
         <ContainerForm>
-          <form className="form-addBook">
-            <div
-              className="formImage"
-              style={{ backgroundImage: `url(${baseImage})` }}
-            >
+          <form className="form-addBook" onSubmit={formik.handleSubmit}>
+            <div className="formImage">
               <label htmlFor="image" className="labelUpload">
                 <input
                   className="customFileInput"
                   type="file"
                   name="image"
                   id="image"
-                  value={formik.values.baseImage}
-                  onChange={(e) => UploadImage(e)}
+                  onChange={UploadImage}
                 />
-                <div className="imgAdd-title">
-                  <img src={add} alt="Imagem adicionar" />
-                  <p>Capa</p>
-                </div>
+                <img
+                  className="image-base64"
+                  src={formik.values.image}
+                  alt=""
+                />
               </label>
             </div>
 
