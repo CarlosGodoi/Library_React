@@ -1,13 +1,14 @@
 import { Button } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { TBook } from '../../../interfaces/books';
+import { IBook } from '../../../Pages/AddBook/interface';
 import { getBookImage } from '../../../utils/getImage';
 import { BgModal, ContainerModal } from './styles';
 
 interface IProps {
   closeModal: VoidFunction;
   open: boolean;
-  selectedBook: TBook;
+  selectedBook: IBook;
   onClickEdit: VoidFunction;
   onClickLend: VoidFunction;
   onClickInactive: VoidFunction;
@@ -23,7 +24,7 @@ const BookModal = ({
   onClickInactive,
   onClickLoan,
 }: IProps) => {
-  const [bookData, setBookData] = useState<TBook>({} as TBook);
+  const [bookData, setBookData] = useState<IBook>({} as IBook);
 
   const modalClosed = () => {
     closeModal();

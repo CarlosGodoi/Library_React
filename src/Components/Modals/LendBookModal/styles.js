@@ -14,8 +14,9 @@ export const BgModal = styled.div`
 export const ContainerModal = styled.div`
   background-color: #ffffff;
   border-radius: 5px;
-  width: 50%;
-  height: 50vh;
+  width: 50.25rem;
+  border: solid 1px #707070;
+  padding: 1.5rem 1rem;
   position: absolute;
   top: 35%;
   left: 50%;
@@ -72,6 +73,7 @@ export const ContainerModal = styled.div`
 
   .btn-form {
     width: 100%;
+    padding: 1rem 0;
     margin: 0 auto;
     display: flex;
     justify-content: end;

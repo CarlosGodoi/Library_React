@@ -6,6 +6,7 @@ import MaterialTable from 'material-table';
 import loanHistory from '../../Services/loanHistory';
 import { ThemeProvider, createTheme } from '@mui/material';
 import api from '../../Services/api';
+import GetAllBooks from '../../Services/GetAllBooks';
 
 const LoanHistory = () => {
   const navigate = useNavigate();
@@ -16,9 +17,8 @@ const LoanHistory = () => {
   console.log(rentHistory);
 
   useEffect(() => {
-    api
-      .get('data')
-      .then((res: any) => console.log(res.data.books))
+    GetAllBooks()
+      .then((res: any) => console.log(res))
       .catch((err) => console.log(err));
   }, []);
   return (

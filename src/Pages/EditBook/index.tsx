@@ -8,25 +8,24 @@ import MenuItem from '@mui/material/MenuItem';
 import { initialValues, validationSchema } from './validation';
 import { useFormik } from 'formik';
 import { IEditBook } from './interface';
-import GetAllBooks from '../../Services/GetAllBooks';
 import { IBook } from '../AddBook/interface';
+import GetBookById from '../../Services/GetBookById';
 
 const EditBook = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [books, setBooks] = useState<IBook | []>([]);
-  console.log(books);
 
   useEffect(() => {
-    GetAllBooks()
-      .then((res) => {
-        let chosenBook = res.find(
-          (book: IEditBook) => console.log(book.id) === id,
-        );
-        formik.setValues(chosenBook);
-        setBooks(res.map((book: IBook) => book));
-      })
-      .catch((err) => console.log(err));
+    if (id)
+      GetBookById(id)
+        .then((res) => {
+          console.log(res);
+
+          // formik.setValues(chosenBook);
+          // setBooks(res.map((book: IBook) => book));
+        })
+        .catch((err) => console.log(err));
   }, [id]);
 
   const UploadImage = async (e: any) => {

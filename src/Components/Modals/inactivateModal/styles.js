@@ -14,8 +14,9 @@ export const BgModal = styled.div`
 export const ContainerModal = styled.div`
   background-color: #ffffff;
   border-radius: 5px;
-  width: 50%;
-  height: 50vh;
+  width: 50.25rem;
+  padding: 1rem;
+  border: solid 1px #707070;
   position: absolute;
   top: 35%;
   left: 50%;

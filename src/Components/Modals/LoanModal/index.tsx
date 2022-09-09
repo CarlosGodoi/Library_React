@@ -2,6 +2,7 @@ import { createTheme } from '@mui/material';
 import { ThemeProvider } from '@mui/styles';
 import MaterialTable from 'material-table';
 import React, { useEffect, useState } from 'react';
+import GetAllBooks from '../../../Services/GetAllBooks';
 import loanHistory from '../../../Services/loanHistory';
 import { BgModal, ContainerModal } from './styles';
 
@@ -11,12 +12,14 @@ interface IProps {
 }
 
 const LoanBookModal = ({ closeModal, open }: IProps) => {
-  const [rentHistory, setRentHistory] = useState([]);
+  const [rentBooks, setRentBooks] = useState([]);
   const defaultMaterialTheme = createTheme();
-
+  console.log(rentBooks);
   useEffect(() => {
-    loanHistory()
-      .then((res: any) => setRentHistory(res))
+    GetAllBooks()
+      .then((res: any) => {
+        setRentBooks(res);
+      })
       .catch((err) => console.log(err));
   }, []);
 
@@ -35,7 +38,7 @@ const LoanBookModal = ({ closeModal, open }: IProps) => {
         <div className="container-table">
           <ThemeProvider theme={defaultMaterialTheme}>
             <MaterialTable
-              data={rentHistory}
+              data={rentBooks}
               title="Tabela comparativa"
               columns={[
                 { title: 'Aluno', field: 'studentName' },

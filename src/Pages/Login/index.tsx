@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ContainerBg, ContainerLogin } from './styles';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -11,6 +11,7 @@ import Loading from '../../Components/Loading';
 import { useAuth } from '../../Components/Context/UserContext';
 import { useMessage } from '../../Components/Context/MessageContext';
 import { useLoading } from '../../Components/Context/LoadingContext';
+import userAuth from '../../Services/auth';
 
 const Login = () => {
   const navigate = useNavigate();

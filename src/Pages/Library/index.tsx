@@ -16,15 +16,16 @@ import { TBook } from '../../interfaces/books';
 import InactivateBookModal from '../../Components/Modals/inactivateModal';
 import LoanBookModal from '../../Components/Modals/LoanModal';
 import GetAllBooks from '../../Services/GetAllBooks';
+import { IBook } from '../AddBook/interface';
+import logo from '../../Assets/styleImages/Logo.svg';
 
 const Library = () => {
-  const [books, setBooks] = useState<TBook[]>([]);
-  const [booksOriginals, setBooksOriginals] = useState<TBook[]>([]);
+  const [books, setBooks] = useState<IBook[]>([]);
+  const [booksOriginals, setBooksOriginals] = useState<IBook[]>([]);
   const navigate = useNavigate();
-  console.log(books);
 
   const [modalBook, setModalBook] = useState(false);
-  const [selectedBook, setSelectedBook] = useState<TBook>({} as TBook);
+  const [selectedBook, setSelectedBook] = useState<IBook>({} as IBook);
   const [modalLendBook, setModalLendBook] = useState(false);
   const [modalInactiveBook, setModalInactiveBook] = useState(false);
   const [modalLoanBook, setModalLoanBook] = useState(false);
@@ -98,7 +99,6 @@ const Library = () => {
           <form
             className="container"
             onSubmit={() => {
-              console.log('fui chamado');
               filterBooks();
             }}
           >
@@ -122,7 +122,7 @@ const Library = () => {
             </div>
           </form>
           <ContainerBooks>
-            {books?.map((book: TBook, i) => {
+            {books?.map((book: IBook, i) => {
               return (
                 <div
                   className="container-book"
@@ -153,6 +153,7 @@ const Library = () => {
             <LendBook
               closeModal={() => setModalLendBook(false)}
               open={modalLendBook}
+              selectedBook={selectedBook}
             />
             <InactivateBookModal
               open={modalInactiveBook}

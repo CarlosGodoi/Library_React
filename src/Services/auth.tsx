@@ -2,7 +2,6 @@ import { ILogin } from '../Pages/Login/interface';
 
 const userAuth = async (values: ILogin) => {
   let data;
-
   return fetch('./data.json')
     .then((res) => res.json())
     .then((body) => {

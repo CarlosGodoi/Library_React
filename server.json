@@ -38,6 +38,12 @@
           "class": "T127",
           "withdrawalDate": "25/06/2022",
           "deliveryDate": "12/07/2022"
+        },
+        {
+          "studentName": "Teste 1",
+          "withdrawalDate": "09/09/2022",
+          "deliveryDate": "14/09/2022",
+          "class": "T23"
         }
       ]
     },

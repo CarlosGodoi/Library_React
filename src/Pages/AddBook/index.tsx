@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ContainerBg, ContainerForm, ContainerMain } from './styles';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useNavigate } from 'react-router-dom';
@@ -7,7 +7,6 @@ import MenuItem from '@mui/material/MenuItem';
 import { useFormik } from 'formik';
 import { initialValues, validationSchema } from './validation';
 import { IBook } from './interface';
-import add from '../../Assets/styleImages/add_capa.svg';
 import createBook from '../../Services/CreateBook';
 
 const AddBook = () => {
