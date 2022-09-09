@@ -12,12 +12,10 @@ import Select from '@mui/material/Select';
 import BookModal from '../../Components/Modals/BookModal';
 import LendBook from '../../Components/Modals/LendBookModal';
 import { getBookImage } from '../../utils/getImage';
-import { TBook } from '../../interfaces/books';
 import InactivateBookModal from '../../Components/Modals/inactivateModal';
 import LoanBookModal from '../../Components/Modals/LoanModal';
 import GetAllBooks from '../../Services/GetAllBooks';
 import { IBook } from '../AddBook/interface';
-import logo from '../../Assets/styleImages/Logo.svg';
 
 const Library = () => {
   const [books, setBooks] = useState<IBook[]>([]);
@@ -42,9 +40,9 @@ const Library = () => {
       .catch((err: any) => console.log(err));
   }, []);
 
-  const opeModalEdit = () => {
+  const opeModalEdit = (id: string) => {
     setModalBook(false);
-    navigate('/editarLivro', { state: 'book' });
+    navigate(`/editarLivro/${id}`, { state: 'book' });
   };
 
   const openLendModal = () => {

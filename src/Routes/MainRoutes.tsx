@@ -32,6 +32,7 @@ const MainRoutes = () => {
     <>
       {message.display && <AlertMessage />}
       {loading.visible && <Loading />}
+
       <BrowserRouter>
         <Routes>
           {routes.map((route) => (

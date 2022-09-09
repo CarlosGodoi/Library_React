@@ -14,16 +14,12 @@ import GetBookById from '../../Services/GetBookById';
 const EditBook = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const [books, setBooks] = useState<IBook | []>([]);
 
   useEffect(() => {
     if (id)
       GetBookById(id)
         .then((res) => {
-          console.log(res);
-
-          // formik.setValues(chosenBook);
-          // setBooks(res.map((book: IBook) => book));
+          formik.setValues(res);
         })
         .catch((err) => console.log(err));
   }, [id]);
@@ -135,6 +131,7 @@ const EditBook = () => {
                 <MenuItem value="Ação e Aventura">Ação e Aventura</MenuItem>
                 <MenuItem value="Horror">Horror</MenuItem>
                 <MenuItem value="Romance">Romance</MenuItem>
+                <MenuItem value="Autoajuda">Autoajuda</MenuItem>
               </TextField>
             </div>
             <div className="formData">

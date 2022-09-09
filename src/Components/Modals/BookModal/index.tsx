@@ -9,7 +9,7 @@ interface IProps {
   closeModal: VoidFunction;
   open: boolean;
   selectedBook: IBook;
-  onClickEdit: VoidFunction;
+  onClickEdit: (id: string) => void;
   onClickLend: VoidFunction;
   onClickInactive: VoidFunction;
   onClickLoan: VoidFunction;
@@ -24,15 +24,9 @@ const BookModal = ({
   onClickInactive,
   onClickLoan,
 }: IProps) => {
-  const [bookData, setBookData] = useState<IBook>({} as IBook);
-
   const modalClosed = () => {
     closeModal();
   };
-
-  useEffect(() => {
-    setBookData(selectedBook);
-  }, [selectedBook]);
 
   return open ? (
     <BgModal>
@@ -44,7 +38,7 @@ const BookModal = ({
           <div className="container-img-btn">
             <div className="img-book">
               <img
-                src={bookData.image ? getBookImage(bookData.image) : ''}
+                src={selectedBook.image ? getBookImage(selectedBook.image) : ''}
                 alt="Imagem do livro"
               />
             </div>
@@ -56,20 +50,23 @@ const BookModal = ({
           </div>
           <div className="container-contentBook-btns">
             <div className="title">
-              <h2>{bookData.tittle}</h2>
+              <h2>{selectedBook.tittle}</h2>
             </div>
             <div className="data-book">
               <h3>Sinopse</h3>
-              <p>{bookData.synopsis}</p>
+              <p>{selectedBook.synopsis}</p>
               <h3>Autor</h3>
-              <p>{bookData.author}</p>
+              <p>{selectedBook.author}</p>
               <h3>Genero</h3>
-              <p>{bookData.genre}</p>
+              <p>{selectedBook.genre}</p>
               <h3>Data de Entrada</h3>
-              <p>{bookData.systemEntryDate}</p>
+              <p>{selectedBook.systemEntryDate}</p>
             </div>
             <div className="btns-Modal">
-              <Button className="btn-edit" onClick={onClickEdit}>
+              <Button
+                className="btn-edit"
+                onClick={() => onClickEdit(selectedBook.id)}
+              >
                 Editar
               </Button>
               <Button className="btn-inactivate" onClick={onClickInactive}>

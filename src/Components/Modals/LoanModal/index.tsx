@@ -14,7 +14,7 @@ interface IProps {
 const LoanBookModal = ({ closeModal, open }: IProps) => {
   const [rentBooks, setRentBooks] = useState([]);
   const defaultMaterialTheme = createTheme();
-  console.log(rentBooks);
+
   useEffect(() => {
     GetAllBooks()
       .then((res: any) => {

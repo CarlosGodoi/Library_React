@@ -33,7 +33,7 @@ export const routes = [
     private: true,
   },
   {
-    path: '/editarLivro',
+    path: '/editarLivro/:id',
     element: <EditBook />,
     private: true,
   },

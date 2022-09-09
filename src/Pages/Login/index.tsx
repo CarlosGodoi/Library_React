@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import { ContainerBg, ContainerLogin } from './styles';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -7,11 +6,9 @@ import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { validationSchema, initialValues } from './validation';
 import { ILogin } from './interface';
-import Loading from '../../Components/Loading';
 import { useAuth } from '../../Components/Context/UserContext';
 import { useMessage } from '../../Components/Context/MessageContext';
 import { useLoading } from '../../Components/Context/LoadingContext';
-import userAuth from '../../Services/auth';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -23,6 +20,7 @@ const Login = () => {
     initialValues,
     validationSchema,
     onSubmit(values: ILogin) {
+      setLoading({ visible: true });
       handleLogin(values)
         .then((resp) => {
           if (resp === true)
@@ -31,6 +29,7 @@ const Login = () => {
               display: true,
               severity: 'success',
             });
+          setLoading({ visible: false });
           navigate('/home');
         })
         .catch((err) =>
