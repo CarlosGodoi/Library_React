@@ -24,7 +24,12 @@ const LendBook = ({ closeModal, open, selectedBook }: IProps) => {
       ...selectedBook,
       rentHistory: [...selectedBook.rentHistory, values],
     };
-    await updateBook(updatedBook);
+    await updateBook(updatedBook)
+      .then((res) => {
+        console.log(res);
+        navigate('/biblioteca');
+      })
+      .catch((err) => console.log(err));
   }
 
   const formik = useFormik({

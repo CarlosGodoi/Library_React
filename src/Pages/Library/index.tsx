@@ -16,11 +16,13 @@ import InactivateBookModal from '../../Components/Modals/inactivateModal';
 import LoanBookModal from '../../Components/Modals/LoanModal';
 import GetAllBooks from '../../Services/GetAllBooks';
 import { IBook } from '../AddBook/interface';
+import { useLoading } from '../../Components/Context/LoadingContext';
 
 const Library = () => {
   const [books, setBooks] = useState<IBook[]>([]);
   const [booksOriginals, setBooksOriginals] = useState<IBook[]>([]);
   const navigate = useNavigate();
+  const { setLoading } = useLoading();
 
   const [modalBook, setModalBook] = useState(false);
   const [selectedBook, setSelectedBook] = useState<IBook>({} as IBook);
@@ -68,6 +70,8 @@ const Library = () => {
     event?.preventDefault();
     let bookFilter = inputSearch;
     let bookAttribute = descriptionBook;
+    console.log(bookFilter);
+    console.log(bookAttribute);
 
     if (bookFilter !== '' && bookAttribute !== '') {
       switch (bookAttribute) {
@@ -79,8 +83,38 @@ const Library = () => {
             }),
           );
           break;
+
+        case 'author':
+          setBooks(
+            booksOriginals.filter((book) => {
+              let bookAuthor = book.author.toUpperCase().includes(bookFilter);
+              return bookAuthor;
+            }),
+          );
+          break;
+
+        case 'systemEntryDate':
+          setBooks(
+            booksOriginals.filter((book) => {
+              let bookAuthor = book.systemEntryDate
+                .toUpperCase()
+                .includes(bookFilter);
+              return bookAuthor;
+            }),
+          );
+          break;
+
+        case 'synopsis':
+          setBooks(
+            booksOriginals.filter((book) => {
+              let bookAuthor = book.synopsis.toUpperCase().includes(bookFilter);
+              return bookAuthor;
+            }),
+          );
+          break;
       }
-      console.log(bookFilter);
+    } else {
+      return booksOriginals;
     }
   }
 
@@ -97,11 +131,17 @@ const Library = () => {
           <form
             className="container"
             onSubmit={() => {
+              console.log('chamou');
               filterBooks();
             }}
           >
             <div className="input-search">
-              <input type="text" placeholder="Pesquisar livro..." />
+              <input
+                type="text"
+                placeholder="Pesquisar livro..."
+                value={inputSearch}
+                onChange={(e) => setInputSearch(e.target.value)}
+              />
               <button type="submit">Buscar</button>
             </div>
             <div className="select-search">
@@ -156,6 +196,7 @@ const Library = () => {
             <InactivateBookModal
               open={modalInactiveBook}
               closeModal={() => setModalInactiveBook(false)}
+              selectedBook={selectedBook}
             />
             <LoanBookModal
               open={modalLoanBook}

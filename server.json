@@ -44,6 +44,12 @@
           "withdrawalDate": "09/09/2022",
           "deliveryDate": "14/09/2022",
           "class": "T23"
+        },
+        {
+          "studentName": "teste4",
+          "withdrawalDate": "20/09/2022",
+          "deliveryDate": "14/10/2022",
+          "class": "T70"
         }
       ]
     },
@@ -59,7 +65,14 @@
       "image": "./assets/livro02.png",
       "systemEntryDate": "02/01/2020",
       "synopsis": "Mussum Ipsum, cacilds vidis litro abertis. In elementis mé pra quem é amistosis quis leo.Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi.Quem num gosta di mé, boa gentis num é.Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.",
-      "rentHistory": []
+      "rentHistory": [
+        {
+          "studentName": "teste45",
+          "withdrawalDate": "20/09/2022",
+          "deliveryDate": "14/10/2022",
+          "class": "T234"
+        }
+      ]
     },
     {
       "id": "c0b0e924-b5de-4f9c-bfc4-144fbe972912",

@@ -1,9 +1,13 @@
+import api from './api';
+
 const loanHistory = async () => {
   let data;
   let newArrayBooks: any = [];
+  console.log(newArrayBooks);
 
-  return fetch('./data.json')
-    .then((res) => res.json())
+  await api
+    .get('./books')
+    .then((res) => res)
     .then((body) => {
       data = body.data.books;
       data.forEach((book: any) =>

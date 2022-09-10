@@ -1,4 +1,4 @@
-import { string, object } from 'yup';
+import { string, object, boolean } from 'yup';
 
 export const validationSchema = object({
   studentName: string(),

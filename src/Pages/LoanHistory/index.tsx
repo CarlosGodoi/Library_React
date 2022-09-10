@@ -3,9 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { ContainerBg, ContainerMain, ContainerTable } from './styles';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import MaterialTable from 'material-table';
-import loanHistory from '../../Services/loanHistory';
 import { ThemeProvider, createTheme } from '@mui/material';
-import api from '../../Services/api';
 import GetAllBooks from '../../Services/GetAllBooks';
 
 const LoanHistory = () => {
@@ -14,11 +12,10 @@ const LoanHistory = () => {
 
   const [books, setBooks] = useState([]);
   const [rentHistory, setRentHistory] = useState([]);
-  console.log(rentHistory);
 
   useEffect(() => {
     GetAllBooks()
-      .then((res: any) => console.log(res))
+      .then((res: any) => setBooks(res))
       .catch((err) => console.log(err));
   }, []);
   return (

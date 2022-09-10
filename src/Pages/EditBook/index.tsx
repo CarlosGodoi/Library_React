@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../../Components/Header';
 import { ContainerBg, ContainerForm, ContainerMain } from './styles';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -7,13 +6,15 @@ import { Button, TextField } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
 import { initialValues, validationSchema } from './validation';
 import { useFormik } from 'formik';
-import { IEditBook } from './interface';
 import { IBook } from '../AddBook/interface';
 import GetBookById from '../../Services/GetBookById';
+import updateBook from '../../Services/UpdateBook';
+import { useLoading } from '../../Components/Context/LoadingContext';
 
 const EditBook = () => {
   const navigate = useNavigate();
   const { id } = useParams();
+  const { setLoading } = useLoading();
 
   useEffect(() => {
     if (id)
@@ -45,10 +46,21 @@ const EditBook = () => {
     });
   };
 
+  function saveBookEdition(values: IBook) {
+    // eslint-disable-next-line no-restricted-globals
+    event?.preventDefault();
+    updateBook(values)
+      .then((res: IBook) => console.log(res))
+      .catch((err) => console.log(err));
+  }
+
   const formik = useFormik({
     initialValues,
-    // validationSchema,
-    onSubmit(values: IEditBook) {},
+    validationSchema,
+    onSubmit(values: IBook) {
+      saveBookEdition(values);
+      console.log(values);
+    },
   });
   return (
     <ContainerBg>
@@ -60,7 +72,14 @@ const EditBook = () => {
         </div>
 
         <ContainerForm>
-          <form className="form-addBook">
+          <form
+            className="form-addBook"
+            onSubmit={(event) => {
+              event?.preventDefault();
+              formik.handleSubmit();
+              console.log('função chamada');
+            }}
+          >
             <div className="formImage">
               <label htmlFor="image" className="labelUpload">
                 <input
@@ -127,11 +146,14 @@ const EditBook = () => {
                 value={formik.values.genre}
                 onChange={formik.handleChange}
               >
-                <MenuItem value="Fantasia">Fantasia</MenuItem>
-                <MenuItem value="Ação e Aventura">Ação e Aventura</MenuItem>
-                <MenuItem value="Horror">Horror</MenuItem>
-                <MenuItem value="Romance">Romance</MenuItem>
-                <MenuItem value="Autoajuda">Autoajuda</MenuItem>
+                <MenuItem value="Selecione" disabled>
+                  Selecione
+                </MenuItem>
+                <MenuItem value="Finanças">Finanças</MenuItem>
+                <MenuItem value="Historia">História</MenuItem>
+                <MenuItem value="Web Marketing">Web Marketing</MenuItem>
+                <MenuItem value="Autoajuda">Auto Ajuda</MenuItem>
+                <MenuItem value="Ficção Cientifica">Ficção Cientifica</MenuItem>
               </TextField>
             </div>
             <div className="formData">
