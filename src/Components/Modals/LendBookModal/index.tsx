@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { Button, TextField } from '@mui/material';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
@@ -13,7 +14,6 @@ interface IProps {
 }
 
 const LendBook = ({ closeModal, selectedBook }: IProps) => {
-  const navigate = useNavigate();
   const modalClosed = () => {
     closeModal();
   };
@@ -26,7 +26,7 @@ const LendBook = ({ closeModal, selectedBook }: IProps) => {
     await updateBook(updatedBook)
       .then((res) => {
         console.log(res);
-        navigate('/biblioteca');
+        closeModal();
       })
       .catch((err) => console.log(err));
   }

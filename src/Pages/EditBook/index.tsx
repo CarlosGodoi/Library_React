@@ -20,6 +20,7 @@ const EditBook = () => {
     if (id)
       GetBookById(id)
         .then((res) => {
+          console.log(res);
           formik.setValues(res);
         })
         .catch((err) => console.log(err));

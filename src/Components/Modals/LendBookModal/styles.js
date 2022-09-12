@@ -15,10 +15,11 @@ export const ContainerModal = styled.div`
   background-color: #ffffff;
   border-radius: 5px;
   width: 50.25rem;
+  height: 60vh;
   border: solid 1px #707070;
   padding: 1.5rem 1rem;
   position: absolute;
-  top: 35%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: block;
@@ -64,10 +65,11 @@ export const ContainerModal = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    gap: 1rem;
   }
 
   .input {
-    width: 47%;
+    width: 23.125rem;
     height: 53px;
   }
 
@@ -82,7 +84,8 @@ export const ContainerModal = styled.div`
   }
 
   .btn-lend {
-    width: 35%;
+    width: 280px;
+    height: 53px;
     background: #ffc501 0% 0% no-repeat padding-box;
     border: 1px solid #adb5bd;
     border-radius: 5px;

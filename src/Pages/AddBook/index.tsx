@@ -88,6 +88,8 @@ const AddBook = () => {
                 variant="outlined"
                 value={formik.values.tittle}
                 onChange={formik.handleChange}
+                error={Boolean(formik.touched.tittle && formik.errors.tittle)}
+                helperText={formik.touched.tittle && formik.errors.tittle}
               />
             </div>
             <div className="formAuthor">
@@ -100,6 +102,8 @@ const AddBook = () => {
                 variant="outlined"
                 value={formik.values.author}
                 onChange={formik.handleChange}
+                error={Boolean(formik.touched.author && formik.errors.author)}
+                helperText={formik.touched.author && formik.errors.author}
               />
             </div>
             <div className="formSynopsis">
@@ -114,6 +118,10 @@ const AddBook = () => {
                 variant="outlined"
                 value={formik.values.synopsis}
                 onChange={formik.handleChange}
+                error={Boolean(
+                  formik.touched.synopsis && formik.errors.synopsis,
+                )}
+                helperText={formik.touched.synopsis && formik.errors.synopsis}
               />
             </div>
             <div className="formGenre">
@@ -126,6 +134,8 @@ const AddBook = () => {
                 label="genero"
                 value={formik.values.genre}
                 onChange={formik.handleChange}
+                error={Boolean(formik.touched.genre && formik.errors.genre)}
+                helperText={formik.touched.genre && formik.errors.genre}
               >
                 <MenuItem value="Fantasia">Fantasia</MenuItem>
                 <MenuItem value="Ação e Aventura">Ação e Aventura</MenuItem>
@@ -142,6 +152,14 @@ const AddBook = () => {
                 variant="outlined"
                 value={formik.values.systemEntryDate}
                 onChange={formik.handleChange}
+                error={Boolean(
+                  formik.touched.systemEntryDate &&
+                    formik.errors.systemEntryDate,
+                )}
+                helperText={
+                  formik.touched.systemEntryDate &&
+                  formik.errors.systemEntryDate
+                }
               />
             </div>
             <div className="buttons-form">

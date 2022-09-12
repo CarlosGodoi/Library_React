@@ -6,7 +6,7 @@ import {
   SearchBooks,
 } from './styles';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import BookModal from '../../Components/Modals/BookModal';
@@ -17,6 +17,7 @@ import LoanBookModal from '../../Components/Modals/LoanModal';
 import GetAllBooks from '../../Services/GetAllBooks';
 import { IBook } from '../AddBook/interface';
 import { useLoading } from '../../Components/Context/LoadingContext';
+import GetBookById from '../../Services/GetBookById';
 
 const Library = () => {
   const [books, setBooks] = useState<IBook[]>([]);
@@ -32,6 +33,7 @@ const Library = () => {
 
   const [descriptionBook, setDescriptionBook] = useState<string>('');
   const [inputSearch, setInputSearch] = useState('');
+  const { id } = useParams();
 
   useEffect(() => {
     GetAllBooks()
@@ -66,8 +68,6 @@ const Library = () => {
   };
 
   function filterBooks() {
-    // eslint-disable-next-line no-restricted-globals
-    event?.preventDefault();
     let bookFilter = inputSearch;
     let bookAttribute = descriptionBook;
     console.log(bookFilter);
@@ -136,8 +136,8 @@ const Library = () => {
         <SearchBooks>
           <form
             className="container"
-            onSubmit={() => {
-              console.log('chamou');
+            onSubmit={(event) => {
+              event.preventDefault();
               filterBooks();
             }}
           >
@@ -198,7 +198,10 @@ const Library = () => {
 
             {modalLendBook && (
               <LendBook
-                closeModal={() => setModalLendBook(false)}
+                closeModal={() => {
+                  setModalLendBook(false);
+                  setModalBook(true);
+                }}
                 selectedBook={selectedBook}
               />
             )}
@@ -211,7 +214,10 @@ const Library = () => {
             )}
 
             {modalLoanBook && (
-              <LoanBookModal closeModal={() => setModalLoanBook(false)} />
+              <LoanBookModal
+                closeModal={() => setModalLoanBook(false)}
+                selected={selectedBook}
+              />
             )}
           </ContainerBooks>
         </SearchBooks>

@@ -2,15 +2,17 @@ import { createTheme } from '@mui/material';
 import { ThemeProvider } from '@mui/styles';
 import MaterialTable from 'material-table';
 import React, { useEffect, useState } from 'react';
+import { IBook } from '../../../Pages/AddBook/interface';
 import GetAllBooks from '../../../Services/GetAllBooks';
 import loanHistory from '../../../Services/loanHistory';
 import { BgModal, ContainerModal } from './styles';
 
 interface IProps {
   closeModal: () => void;
+  selected: IBook;
 }
 
-const LoanBookModal = ({ closeModal }: IProps) => {
+const LoanBookModal = ({ closeModal, selected }: IProps) => {
   const [rentBooks, setRentBooks] = useState([]);
   const defaultMaterialTheme = createTheme();
 

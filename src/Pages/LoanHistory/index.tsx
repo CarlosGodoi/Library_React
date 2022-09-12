@@ -4,7 +4,6 @@ import { ContainerBg, ContainerMain, ContainerTable } from './styles';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import MaterialTable from 'material-table';
 import { ThemeProvider, createTheme } from '@mui/material';
-import GetAllBooks from '../../Services/GetAllBooks';
 import loanHistory from '../../Services/loanHistory';
 
 const LoanHistory = () => {

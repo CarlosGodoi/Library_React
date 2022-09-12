@@ -1,7 +1,7 @@
 import { Button } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { TBook } from '../../../interfaces/books';
 import { IBook } from '../../../Pages/AddBook/interface';
+import GetBookById from '../../../Services/GetBookById';
 import { getBookImage } from '../../../utils/getImage';
 import { BgModal, ContainerModal } from './styles';
 
@@ -28,6 +28,8 @@ const BookModal = ({
 
   useEffect(() => {
     //pegar dados do livro pelo selectedbook.id
+    if (selectedBook.id)
+      GetBookById(selectedBook.id).then((res) => console.log(res));
   }, []);
 
   return (
