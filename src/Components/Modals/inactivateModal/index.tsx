@@ -8,33 +8,33 @@ import { initialValues, validationSchema } from './validation';
 
 interface IProps {
   closeModal: () => void;
-  open: boolean;
   selectedBook: IBook;
 }
 
-const InactivateBookModal = ({ closeModal, open, selectedBook }: IProps) => {
+const InactivateBookModal = ({ closeModal, selectedBook }: IProps) => {
   const modalClosed = () => {
     closeModal();
   };
 
-  async function inactivatedBook(values: any) {
+  async function inactivateBook(values: { description: string }) {
     const updatedBook: IBook = {
       ...selectedBook,
-      status: { ...selectedBook.status, values },
+      status: { description: values.description, isActive: false },
     };
-    await updateBook(updatedBook);
-    console.log(updatedBook);
+    await updateBook(updatedBook).then((res) => {
+      console.log(res);
+    });
   }
 
   const formik = useFormik({
     initialValues,
     validationSchema,
     onSubmit(values: any) {
-      inactivatedBook(values);
+      inactivateBook(values);
     },
   });
 
-  return open ? (
+  return (
     <BgModal>
       <ContainerModal>
         <div className="container-exit" onClick={modalClosed}>
@@ -64,8 +64,6 @@ const InactivateBookModal = ({ closeModal, open, selectedBook }: IProps) => {
         </form>
       </ContainerModal>
     </BgModal>
-  ) : (
-    <div></div>
   );
 };
 

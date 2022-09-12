@@ -7,7 +7,6 @@ import { BgModal, ContainerModal } from './styles';
 
 interface IProps {
   closeModal: VoidFunction;
-  open: boolean;
   selectedBook: IBook;
   onClickEdit: (id: string) => void;
   onClickLend: VoidFunction;
@@ -17,7 +16,6 @@ interface IProps {
 
 const BookModal = ({
   closeModal,
-  open,
   selectedBook,
   onClickEdit,
   onClickLend,
@@ -28,7 +26,11 @@ const BookModal = ({
     closeModal();
   };
 
-  return open ? (
+  useEffect(() => {
+    //pegar dados do livro pelo selectedbook.id
+  }, []);
+
+  return (
     <BgModal>
       <ContainerModal>
         <div className="container-exit" onClick={modalClosed}>
@@ -80,8 +82,6 @@ const BookModal = ({
         </div>
       </ContainerModal>
     </BgModal>
-  ) : (
-    <div></div>
   );
 };
 

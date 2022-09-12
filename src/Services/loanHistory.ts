@@ -7,10 +7,8 @@ const loanHistory = async () => {
 
   await api
     .get('./books')
-    .then((res) => res)
-    .then((body) => {
-      data = body.data.books;
-      data.forEach((book: any) =>
+    .then((body) => 
+      data = body.data.forEach((book: any) =>
         book.rentHistory?.map((rent: any) =>
           newArrayBooks.push({
             bookTitle: book.tittle,
@@ -20,10 +18,9 @@ const loanHistory = async () => {
             deliveryDate: rent.deliveryDate,
           }),
         ),
-      );
+    ));
       return Promise.resolve(newArrayBooks);
-    })
-    .catch((err) => Promise.reject(err));
+    // ).catch((err:any) => Promise.reject(err));
 };
 
 export default loanHistory;

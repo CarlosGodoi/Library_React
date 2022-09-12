@@ -78,10 +78,10 @@ const Library = () => {
         case 'genre':
           setBooks(
             booksOriginals.filter((book) => {
-              let bookAuthor = book.genre
+              let researchedBook = book.genre
                 .toUpperCase()
                 .includes(bookFilter.toString().toUpperCase());
-              return bookAuthor;
+              return researchedBook;
             }),
           );
           break;
@@ -89,10 +89,10 @@ const Library = () => {
         case 'author':
           setBooks(
             booksOriginals.filter((book) => {
-              let bookAuthor = book.author
+              let researchedBook = book.author
                 .toUpperCase()
                 .includes(bookFilter.toString().toUpperCase());
-              return bookAuthor;
+              return researchedBook;
             }),
           );
           break;
@@ -100,10 +100,10 @@ const Library = () => {
         case 'systemEntryDate':
           setBooks(
             booksOriginals.filter((book) => {
-              let bookAuthor = book.systemEntryDate
+              let researchedBook = book.systemEntryDate
                 .toUpperCase()
                 .includes(bookFilter.toString().toUpperCase());
-              return bookAuthor;
+              return researchedBook;
             }),
           );
           break;
@@ -111,10 +111,10 @@ const Library = () => {
         case 'synopsis':
           setBooks(
             booksOriginals.filter((book) => {
-              let bookAuthor = book.synopsis
+              let researchedBook = book.synopsis
                 .toUpperCase()
                 .includes(bookFilter.toString().toUpperCase());
-              return bookAuthor;
+              return researchedBook;
             }),
           );
           break;
@@ -185,29 +185,34 @@ const Library = () => {
                 </div>
               );
             })}
-            <BookModal
-              open={modalBook}
-              selectedBook={selectedBook}
-              onClickEdit={opeModalEdit}
-              onClickLend={openLendModal}
-              onClickInactive={openInactiveModal}
-              onClickLoan={openLoanModal}
-              closeModal={() => setModalBook(false)}
-            />
-            <LendBook
-              closeModal={() => setModalLendBook(false)}
-              open={modalLendBook}
-              selectedBook={selectedBook}
-            />
-            <InactivateBookModal
-              open={modalInactiveBook}
-              closeModal={() => setModalInactiveBook(false)}
-              selectedBook={selectedBook}
-            />
-            <LoanBookModal
-              open={modalLoanBook}
-              closeModal={() => setModalLoanBook(false)}
-            />
+            {modalBook && (
+              <BookModal
+                selectedBook={selectedBook}
+                onClickEdit={opeModalEdit}
+                onClickLend={openLendModal}
+                onClickInactive={openInactiveModal}
+                onClickLoan={openLoanModal}
+                closeModal={() => setModalBook(false)}
+              />
+            )}
+
+            {modalLendBook && (
+              <LendBook
+                closeModal={() => setModalLendBook(false)}
+                selectedBook={selectedBook}
+              />
+            )}
+
+            {modalInactiveBook && (
+              <InactivateBookModal
+                closeModal={() => setModalInactiveBook(false)}
+                selectedBook={selectedBook}
+              />
+            )}
+
+            {modalLoanBook && (
+              <LoanBookModal closeModal={() => setModalLoanBook(false)} />
+            )}
           </ContainerBooks>
         </SearchBooks>
       </ContainerMain>

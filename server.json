@@ -20,8 +20,8 @@
       "author": "Napoleon Hill",
       "genre": "Autoajuda",
       "status": {
-        "isActive": false,
-        "description": "desativado porque estragou"
+        "description": "teste",
+        "isActive": false
       },
       "image": "./assets/livro01.png",
       "systemEntryDate": "02/01/2020",
@@ -50,17 +50,26 @@
           "withdrawalDate": "20/09/2022",
           "deliveryDate": "14/10/2022",
           "class": "T70"
+        },
+        {
+          "studentName": "eduardo",
+          "withdrawalDate": "09/09/2022",
+          "deliveryDate": "14/09/2022",
+          "class": "T23"
         }
       ]
     },
     {
       "id": "928ccbda-16fe-4d6c-bdb2-08d4ee28ac0e",
-      "tittle": "Hereges de Duna",
+      "tittle": "Hereges de Duna2",
       "author": "Frank Herbert",
       "genre": "Ficção Cientifica",
       "status": {
         "isActive": true,
-        "description": ""
+        "description": "",
+        "values": {
+          "description": "teste"
+        }
       },
       "image": "./assets/livro02.png",
       "systemEntryDate": "02/01/2020",

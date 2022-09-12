@@ -1,11 +1,9 @@
-import { string, object, boolean } from 'yup';
+import { string, object } from 'yup';
 
 export const validationSchema = object({
-    isActive: boolean(),
-    description: string()
+  description: string(),
 });
 
 export const initialValues = {
-    isActive: boolean,
-    description: ''
+  description: '',
 };

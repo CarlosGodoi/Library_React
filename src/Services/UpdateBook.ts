@@ -2,6 +2,8 @@ import { IBook } from '../Pages/AddBook/interface';
 import api from './api';
 
 const updateBook = async (book: IBook) => {
+  
+  console.log(book)
   try {
     const res = await api.put(`/books/${book.id}`,book);
     return Promise.resolve(res.data);

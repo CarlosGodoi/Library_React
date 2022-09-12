@@ -1,11 +1,11 @@
-import { string, boolean, number, object, array } from 'yup';
+import { string, object, array } from 'yup';
 
 export const validationSchema = object({
   id: string(),
   author: string(),
   genre: string(),
   image: string(),
-  rentHistory: object(),
+  rentHistory: array(),
   status: object(),
   synopsis: string(),
   systemEntryDate: string(),

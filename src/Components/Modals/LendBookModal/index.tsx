@@ -9,11 +9,10 @@ import { initialValues, validationSchema } from './validation';
 
 interface IProps {
   closeModal: () => void;
-  open: boolean;
   selectedBook: IBook;
 }
 
-const LendBook = ({ closeModal, open, selectedBook }: IProps) => {
+const LendBook = ({ closeModal, selectedBook }: IProps) => {
   const navigate = useNavigate();
   const modalClosed = () => {
     closeModal();
@@ -39,7 +38,7 @@ const LendBook = ({ closeModal, open, selectedBook }: IProps) => {
       borrowingBook(values);
     },
   });
-  return open ? (
+  return (
     <BgModal>
       <ContainerModal>
         <div className="container-exit" onClick={modalClosed}>
@@ -95,8 +94,6 @@ const LendBook = ({ closeModal, open, selectedBook }: IProps) => {
         </div>
       </ContainerModal>
     </BgModal>
-  ) : (
-    <div></div>
   );
 };
 

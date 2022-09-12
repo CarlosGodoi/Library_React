@@ -48,7 +48,6 @@ const EditBook = () => {
 
   function saveBookEdition(values: IBook) {
     // eslint-disable-next-line no-restricted-globals
-    event?.preventDefault();
     updateBook(values)
       .then((res: IBook) => console.log(res))
       .catch((err) => console.log(err));
@@ -62,6 +61,7 @@ const EditBook = () => {
       console.log(values);
     },
   });
+
   return (
     <ContainerBg>
       <ContainerMain>
@@ -76,7 +76,7 @@ const EditBook = () => {
             className="form-addBook"
             onSubmit={(event) => {
               event?.preventDefault();
-              formik.handleSubmit();
+              formik.handleSubmit(event);
               console.log('função chamada');
             }}
           >

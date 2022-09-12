@@ -2,14 +2,16 @@ import styled from 'styled-components';
 
 export const ContainerBg = styled.div`
   width: 100%;
-  height: calc(100vh - 5rem);
+  height: 100vh;
   background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Main = styled.div`
-  max-width: 95%;
-  height: 85vh;
-  margin: 0 auto;
+  width: 95%;
+  height: 95vh;
+  margin: 1rem auto;
   background-color: #fff;
   display: flex;
   justify-content: center;

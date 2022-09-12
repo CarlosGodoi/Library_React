@@ -8,10 +8,9 @@ import { BgModal, ContainerModal } from './styles';
 
 interface IProps {
   closeModal: () => void;
-  open: boolean;
 }
 
-const LoanBookModal = ({ closeModal, open }: IProps) => {
+const LoanBookModal = ({ closeModal }: IProps) => {
   const [rentBooks, setRentBooks] = useState([]);
   const defaultMaterialTheme = createTheme();
 
@@ -26,7 +25,7 @@ const LoanBookModal = ({ closeModal, open }: IProps) => {
   const modalClosed = () => {
     closeModal();
   };
-  return open ? (
+  return (
     <BgModal>
       <ContainerModal>
         <div className="container-exit" onClick={modalClosed}>
@@ -66,8 +65,6 @@ const LoanBookModal = ({ closeModal, open }: IProps) => {
         </div>
       </ContainerModal>
     </BgModal>
-  ) : (
-    <div></div>
   );
 };
 
