@@ -78,7 +78,9 @@ const Library = () => {
         case 'genre':
           setBooks(
             booksOriginals.filter((book) => {
-              let bookAuthor = book.genre.toUpperCase().includes(bookFilter);
+              let bookAuthor = book.genre
+                .toUpperCase()
+                .includes(bookFilter.toString().toUpperCase());
               return bookAuthor;
             }),
           );
@@ -87,7 +89,9 @@ const Library = () => {
         case 'author':
           setBooks(
             booksOriginals.filter((book) => {
-              let bookAuthor = book.author.toUpperCase().includes(bookFilter);
+              let bookAuthor = book.author
+                .toUpperCase()
+                .includes(bookFilter.toString().toUpperCase());
               return bookAuthor;
             }),
           );
@@ -98,7 +102,7 @@ const Library = () => {
             booksOriginals.filter((book) => {
               let bookAuthor = book.systemEntryDate
                 .toUpperCase()
-                .includes(bookFilter);
+                .includes(bookFilter.toString().toUpperCase());
               return bookAuthor;
             }),
           );
@@ -107,7 +111,9 @@ const Library = () => {
         case 'synopsis':
           setBooks(
             booksOriginals.filter((book) => {
-              let bookAuthor = book.synopsis.toUpperCase().includes(bookFilter);
+              let bookAuthor = book.synopsis
+                .toUpperCase()
+                .includes(bookFilter.toString().toUpperCase());
               return bookAuthor;
             }),
           );

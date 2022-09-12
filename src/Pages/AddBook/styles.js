@@ -2,16 +2,20 @@ import styled from 'styled-components';
 
 export const ContainerBg = styled.div`
   width: 100%;
-  height: 90vh;
+  height: 100vh;
   background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const ContainerMain = styled.div`
-  max-width: 95%;
+  width: 95%;
   height: 100vh;
-  max-height: 82%;
-  margin: 0.8rem auto;
+  max-height: 90%;
+  margin: 1rem auto;
   background-color: #fff;
+  display: flex;
+  flex-direction: column;
 
   .back-home {
     width: 96%;

@@ -67,7 +67,7 @@ export const SearchBooks = styled.div`
   }
 
   .input-search button {
-    width: 17%;
+    width: 5.125rem;
     height: 40px;
     background-color: #ffc501;
     border: solid 1px #adb5bd;

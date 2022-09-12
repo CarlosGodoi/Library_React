@@ -5,13 +5,19 @@ export const ContainerBg = styled.div`
   height: 90vh;
   padding-bottom: 1rem;
   background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const ContainerMain = styled.div`
   max-width: 95%;
-  max-height: 82%;
+  max-height: 90vh;
   background-color: #fff;
   margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   .back-home {
     width: 96%;
