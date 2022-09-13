@@ -70,4 +70,10 @@ export const Card = styled.div`
     width: 62%;
     height: 27%;
   }
+
+  @media (max-width: 375px) {
+    width: 62%;
+    height: 180px;
+    gap: 1rem;
+  }
 `;

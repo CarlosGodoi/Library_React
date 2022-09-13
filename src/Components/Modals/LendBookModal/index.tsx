@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, TextField } from '@mui/material';
 import { useFormik } from 'formik';
-import { useNavigate } from 'react-router-dom';
 import { IBook } from '../../../Pages/AddBook/interface';
-import api from '../../../Services/api';
 import updateBook from '../../../Services/UpdateBook';
 import { BgModal, ContainerModal } from './styles';
 import { initialValues, validationSchema } from './validation';
+import { useMessage } from '../../Context/MessageContext';
 
 interface IProps {
   closeModal: () => void;
@@ -17,6 +16,7 @@ const LendBook = ({ closeModal, selectedBook }: IProps) => {
   const modalClosed = () => {
     closeModal();
   };
+  const { setMessage } = useMessage();
 
   async function borrowingBook(values: any) {
     const updatedBook: IBook = {
@@ -28,7 +28,13 @@ const LendBook = ({ closeModal, selectedBook }: IProps) => {
         console.log(res);
         closeModal();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setMessage({
+          content: `O seguinte erro ocorreu: ${err}`,
+          display: true,
+          severity: 'error',
+        });
+      });
   }
 
   const formik = useFormik({

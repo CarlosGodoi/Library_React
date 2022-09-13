@@ -170,4 +170,48 @@ export const ContainerModal = styled.div`
     letter-spacing: 0px;
     color: #000000;
   }
+
+  .data-rentBook {
+    width: 44rem;
+    margin: 0 auto;
+    padding-bottom: 1.2rem;
+  }
+
+  .title {
+    width: 100%;
+  }
+
+  .title h3 {
+    font: normal normal 600 18px 'Roboto';
+    letter-spacing: 0px;
+    color: #3e4756;
+    opacity: 1;
+  }
+
+  .container-student {
+    width: 43rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    background: #f4f4f4 0% 0% no-repeat padding-box;
+    border-radius: 5px;
+    opacity: 1;
+  }
+
+  .container-student h3 {
+    text-align: left;
+    font: normal normal 600 14px 'Roboto';
+    letter-spacing: 0px;
+    color: #3e4756;
+    opacity: 1;
+  }
+
+  .container-student p {
+    text-align: left;
+    font: normal normal 400 14px 'Roboto';
+    letter-spacing: 0px;
+    color: #3e4756;
+    opacity: 1;
+  }
 `;

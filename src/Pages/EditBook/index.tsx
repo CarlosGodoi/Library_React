@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { ContainerBg, ContainerForm, ContainerMain } from './styles';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useNavigate, useParams } from 'react-router-dom';

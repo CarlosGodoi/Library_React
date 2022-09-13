@@ -17,7 +17,6 @@ import LoanBookModal from '../../Components/Modals/LoanModal';
 import GetAllBooks from '../../Services/GetAllBooks';
 import { IBook } from '../AddBook/interface';
 import { useLoading } from '../../Components/Context/LoadingContext';
-import GetBookById from '../../Services/GetBookById';
 
 const Library = () => {
   const [books, setBooks] = useState<IBook[]>([]);
@@ -33,7 +32,6 @@ const Library = () => {
 
   const [descriptionBook, setDescriptionBook] = useState<string>('');
   const [inputSearch, setInputSearch] = useState('');
-  const { id } = useParams();
 
   useEffect(() => {
     GetAllBooks()

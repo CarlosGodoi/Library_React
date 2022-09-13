@@ -17,7 +17,7 @@ const LoanBookModal = ({ closeModal, selected }: IProps) => {
   const defaultMaterialTheme = createTheme();
 
   useEffect(() => {
-    GetAllBooks()
+    loanHistory()
       .then((res: any) => {
         setRentBooks(res);
       })

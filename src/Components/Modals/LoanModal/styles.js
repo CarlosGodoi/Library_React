@@ -14,9 +14,10 @@ export const BgModal = styled.div`
 export const ContainerModal = styled.div`
   background-color: #ffffff;
   border-radius: 5px;
-  width: 70%;
+  width: 80%;
+
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: block;

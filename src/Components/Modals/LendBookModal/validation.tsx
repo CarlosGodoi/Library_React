@@ -5,6 +5,7 @@ export const validationSchema = object({
   withdrawalDate: string(),
   deliveryDate: string(),
   class: string(),
+  isBorrowed: boolean(),
 });
 
 export const initialValues = {
@@ -12,4 +13,5 @@ export const initialValues = {
   withdrawalDate: '',
   deliveryDate: '',
   class: '',
+  isBorrowed: true,
 };

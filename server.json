@@ -31,31 +31,15 @@
           "studentName": "Gustavo Kunde",
           "class": "T312",
           "withdrawalDate": "29/05/2022",
-          "deliveryDate": "19/06/2022"
+          "deliveryDate": "19/06/2022",
+          "isBorrowed": true
         },
         {
           "studentName": "Douglas Miller",
           "class": "T127",
           "withdrawalDate": "25/06/2022",
-          "deliveryDate": "12/07/2022"
-        },
-        {
-          "studentName": "Teste 1",
-          "withdrawalDate": "09/09/2022",
-          "deliveryDate": "14/09/2022",
-          "class": "T23"
-        },
-        {
-          "studentName": "teste4",
-          "withdrawalDate": "20/09/2022",
-          "deliveryDate": "14/10/2022",
-          "class": "T70"
-        },
-        {
-          "studentName": "eduardo",
-          "withdrawalDate": "09/09/2022",
-          "deliveryDate": "14/09/2022",
-          "class": "T23"
+          "deliveryDate": "12/07/2022",
+          "isBorrowed": true
         }
       ]
     },
@@ -66,20 +50,21 @@
       "genre": "Ficção Cientifica",
       "status": {
         "isActive": true,
-        "description": "",
-        "values": {
-          "description": "teste"
-        }
+        "description": ""
       },
       "image": "./assets/livro02.png",
       "systemEntryDate": "02/01/2020",
       "synopsis": "Mussum Ipsum, cacilds vidis litro abertis. In elementis mé pra quem é amistosis quis leo.Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi.Quem num gosta di mé, boa gentis num é.Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.",
       "rentHistory": [
         {
-          "studentName": "teste45",
-          "withdrawalDate": "20/09/2022",
+          "isBorrowed": false
+        },
+        {
+          "studentName": "eduardo",
+          "withdrawalDate": "13/09/2022",
           "deliveryDate": "14/10/2022",
-          "class": "T234"
+          "class": "T96",
+          "isBorrowed": true
         }
       ]
     },
@@ -95,7 +80,11 @@
       "image": "./assets/livro03.png",
       "systemEntryDate": "04/12/2019",
       "synopsis": "Mussum Ipsum, cacilds vidis litro abertis. In elementis mé pra quem é amistosis quis leo.Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi.Quem num gosta di mé, boa gentis num é.Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.",
-      "rentHistory": []
+      "rentHistory": [
+        {
+          "isBorrowed": false
+        }
+      ]
     },
     {
       "id": "6053a3cf-d1c1-48ae-9935-4c869855c114",
@@ -109,7 +98,11 @@
       "image": "./assets/livro04.png",
       "systemEntryDate": "06/12/2004",
       "synopsis": "Mussum Ipsum, cacilds vidis litro abertis. In elementis mé pra quem é amistosis quis leo.Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi.Quem num gosta di mé, boa gentis num é.Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.",
-      "rentHistory": []
+      "rentHistory": [
+        {
+          "isBorrowed": false
+        }
+      ]
     },
     {
       "id": "e474cff4-8e0b-4ae3-bd0f-869e8ff746bf",
@@ -123,7 +116,11 @@
       "image": "./assets/livro05.png",
       "systemEntryDate": "02/04/2018",
       "synopsis": "Mussum Ipsum, cacilds vidis litro abertis. In elementis mé pra quem é amistosis quis leo.Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi.Quem num gosta di mé, boa gentis num é.Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.",
-      "rentHistory": []
+      "rentHistory": [
+        {
+          "isBorrowed": false
+        }
+      ]
     },
     {
       "id": "8dab67d2-61b9-445f-8be7-353d8f948d46",
@@ -137,7 +134,11 @@
       "image": "./assets/livro06.png",
       "systemEntryDate": "08/04/2019",
       "synopsis": "Mussum Ipsum, cacilds vidis litro abertis. In elementis mé pra quem é amistosis quis leo.Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi.Quem num gosta di mé, boa gentis num é.Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.",
-      "rentHistory": []
+      "rentHistory": [
+        {
+          "isBorrowed": false
+        }
+      ]
     },
     {
       "id": "dfd02b22-1c02-4cff-a705-4fd1e15d750c",
@@ -151,7 +152,11 @@
       "image": "./assets/livro07.png",
       "systemEntryDate": "01/07/2021",
       "synopsis": "Mussum Ipsum, cacilds vidis litro abertis. In elementis mé pra quem é amistosis quis leo.Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi.Quem num gosta di mé, boa gentis num é.Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.",
-      "rentHistory": []
+      "rentHistory": [
+        {
+          "isBorrowed": false
+        }
+      ]
     },
     {
       "id": "ac2726ab-f488-4ccb-9f30-618921851988",
@@ -165,7 +170,11 @@
       "image": "./assets/livro08.png",
       "systemEntryDate": "20/01/2022",
       "synopsis": "Mussum Ipsum, cacilds vidis litro abertis. In elementis mé pra quem é amistosis quis leo.Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi.Quem num gosta di mé, boa gentis num é.Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.",
-      "rentHistory": []
+      "rentHistory": [
+        {
+          "isBorrowed": false
+        }
+      ]
     },
     {
       "id": "b86eb2e4-d0c9-4aac-9b98-b0b2ef180077",
@@ -179,7 +188,11 @@
       "image": "./assets/livro09.png",
       "systemEntryDate": "12/06/2019",
       "synopsis": "Mussum Ipsum, cacilds vidis litro abertis. In elementis mé pra quem é amistosis quis leo.Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi.Quem num gosta di mé, boa gentis num é.Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.",
-      "rentHistory": []
+      "rentHistory": [
+        {
+          "isBorrowed": false
+        }
+      ]
     },
     {
       "id": "5252f59a-f2dd-4c14-ae27-6aa222a274dc",
@@ -193,7 +206,18 @@
       "image": "./assets/livro10.png",
       "systemEntryDate": "13/02/2017",
       "synopsis": "Mussum Ipsum, cacilds vidis litro abertis. In elementis mé pra quem é amistosis quis leo.Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi.Quem num gosta di mé, boa gentis num é.Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.",
-      "rentHistory": []
+      "rentHistory": [
+        {
+          "isBorrowed": false
+        },
+        {
+          "studentName": "João",
+          "withdrawalDate": "14/09/2022",
+          "deliveryDate": "20/10/2022",
+          "class": "T903",
+          "isBorrowed": true
+        }
+      ]
     },
     {
       "id": "c285d53a-f4de-4c32-af13-7ac423a475fe",
@@ -207,7 +231,11 @@
       "image": "./assets/livro11.png",
       "systemEntryDate": "29/12/2021",
       "synopsis": "Mussum Ipsum, cacilds vidis litro abertis. In elementis mé pra quem é amistosis quis leo.Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi.Quem num gosta di mé, boa gentis num é.Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.",
-      "rentHistory": []
+      "rentHistory": [
+        {
+          "isBorrowed": false
+        }
+      ]
     },
     {
       "id": "5283d52a-f2dc-4c12-ae17-7aa223a275de",
@@ -215,24 +243,18 @@
       "author": "Paulo Vieira",
       "genre": "Autoajuda",
       "status": {
-        "isActive": true,
-        "description": ""
+        "description": "teste",
+        "isActive": false
       },
       "image": "./assets/livro12.png",
       "systemEntryDate": "14/07/2020",
       "synopsis": "Mussum Ipsum, cacilds vidis litro abertis. In elementis mé pra quem é amistosis quis leo.Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi.Quem num gosta di mé, boa gentis num é.Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.",
       "rentHistory": [
         {
-          "studentName": "teste",
-          "withdrawalDate": "20/09/2022",
-          "deliveryDate": "14/10/2022",
-          "class": "T70"
+          "isBorrowed": false
         },
         {
-          "studentName": "teste",
-          "withdrawalDate": "09/09/2022",
-          "deliveryDate": "14/10/2022",
-          "class": "T23"
+          "isBorrowed": false
         }
       ]
     },
@@ -248,7 +270,11 @@
       "image": "./assets/livro13.png",
       "systemEntryDate": "12/04/2019",
       "synopsis": "Mussum Ipsum, cacilds vidis litro abertis. In elementis mé pra quem é amistosis quis leo.Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi.Quem num gosta di mé, boa gentis num é.Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.",
-      "rentHistory": []
+      "rentHistory": [
+        {
+          "isBorrowed": false
+        }
+      ]
     },
     {
       "id": "c215be3a-ca27-8fc2-aa26-9bc317eb356d",
@@ -262,7 +288,11 @@
       "image": "./assets/livro14.png",
       "systemEntryDate": "11/06/2017",
       "synopsis": "Mussum Ipsum, cacilds vidis litro abertis. In elementis mé pra quem é amistosis quis leo.Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi.Quem num gosta di mé, boa gentis num é.Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.",
-      "rentHistory": []
+      "rentHistory": [
+        {
+          "isBorrowed": false
+        }
+      ]
     },
     {
       "id": "c284fd3a-5gd7-28e5-cc46-2bc461f338d",
@@ -276,7 +306,11 @@
       "image": "./assets/livro15.png",
       "systemEntryDate": "22/09/2020",
       "synopsis": "Mussum Ipsum, cacilds vidis litro abertis. In elementis mé pra quem é amistosis quis leo.Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi.Quem num gosta di mé, boa gentis num é.Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.",
-      "rentHistory": []
+      "rentHistory": [
+        {
+          "isBorrowed": false
+        }
+      ]
     }
   ]
 }
