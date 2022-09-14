@@ -107,7 +107,7 @@ const EditBook = () => {
                   onChange={UploadImage}
                 />
                 <div className="image-base64">
-                  <img src={formik.values.image} alt="" />
+                  <img src={getBookImage(formik.values.image)} alt="" />
                 </div>
               </label>
             </div>
