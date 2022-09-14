@@ -1,11 +1,11 @@
 import { ILogin } from '../Pages/Login/interface';
+import api from './api';
 
 const userAuth = async (values: ILogin) => {
   let data;
-  return fetch('./data.json')
-    .then((res) => res.json())
+  return api.get('./login')
     .then((body) => {
-      data = body.data.login;
+      data = body.data
       const userExists = data.find(
         (user: ILogin) => user.email === values.email,
       );

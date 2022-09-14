@@ -32,6 +32,7 @@ const UserProvider: React.FC<IProps> = ({ children }: IProps) => {
     let result = true;
     await userAuth(values)
       .then((resp: ILogin) => {
+        console.log(resp);
         setUser({ email: resp.email });
         localStorage.setItem('email', resp.email);
         result = true;

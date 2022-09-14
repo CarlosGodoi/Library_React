@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ContainerBg, ContainerForm, ContainerMain } from './styles';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -10,11 +10,14 @@ import { IBook } from '../AddBook/interface';
 import GetBookById from '../../Services/GetBookById';
 import updateBook from '../../Services/UpdateBook';
 import { useLoading } from '../../Components/Context/LoadingContext';
+import { getBookImage } from '../../utils/getImage';
+import { useMessage } from '../../Components/Context/MessageContext';
 
 const EditBook = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const { setLoading } = useLoading();
+  const { setMessage } = useMessage();
 
   useEffect(() => {
     if (id)
@@ -50,8 +53,20 @@ const EditBook = () => {
   function saveBookEdition(values: IBook) {
     // eslint-disable-next-line no-restricted-globals
     updateBook(values)
-      .then((res: IBook) => console.log(res))
-      .catch((err) => console.log(err));
+      .then((res: IBook) =>
+        setMessage({
+          content: 'Dados enviados com sucesso',
+          display: true,
+          severity: 'success',
+        }),
+      )
+      .catch((err) =>
+        setMessage({
+          content: '' + err,
+          display: true,
+          severity: 'error',
+        }),
+      );
   }
 
   const formik = useFormik({
@@ -91,9 +106,8 @@ const EditBook = () => {
                   value={''}
                   onChange={UploadImage}
                 />
-                <div className="imgAdd-title">
+                <div className="image-base64">
                   <img src={formik.values.image} alt="" />
-                  <p>Capa</p>
                 </div>
               </label>
             </div>

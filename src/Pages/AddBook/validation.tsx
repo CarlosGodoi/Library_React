@@ -1,6 +1,6 @@
 import { string, boolean, number, object, array } from 'yup';
 
-export const validationSchema = {
+export const validationSchema = object({
   id: string(),
   tittle: string(),
   author: string(),
@@ -10,7 +10,7 @@ export const validationSchema = {
   systemEntryDate: string(),
   synopsis: string(),
   rentHistory: array(),
-};
+});
 
 export const initialValues = {
   id: '',

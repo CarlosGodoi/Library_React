@@ -8,17 +8,29 @@ import { useFormik } from 'formik';
 import { initialValues, validationSchema } from './validation';
 import { IBook } from './interface';
 import createBook from '../../Services/CreateBook';
+import { useMessage } from '../../Components/Context/MessageContext';
 
 const AddBook = () => {
   const navigate = useNavigate();
+  const { setMessage } = useMessage();
 
   const addNewBook = (values: IBook) => {
     createBook(values)
       .then((res: IBook) => {
-        console.log(res);
+        setMessage({
+          content: 'Dados enviados com sucesso',
+          display: true,
+          severity: 'success',
+        });
         navigate('/biblioteca');
       })
-      .catch((err) => console.log(err));
+      .catch((err) =>
+        setMessage({
+          content: '' + err,
+          display: true,
+          severity: 'error',
+        }),
+      );
   };
 
   const formik = useFormik({

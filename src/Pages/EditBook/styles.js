@@ -70,20 +70,21 @@ export const ContainerForm = styled.div`
     background-position: center;
   }
 
-  .imgAdd-title {
-    width: 5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .image-base64 {
+    width: 10.75rem;
+    height: 14.5rem;
   }
 
-  .imgAdd-title > img {
-    width: 1.5rem;
-    height: 1.5rem;
-    margin-right: 0.5rem;
+  .image-base64 img {
+    width: 10.75rem;
+    height: 14.5rem;
+    object-fit: cover;
+    cursor: pointer;
   }
 
   .imgAdd-title p {
+    width: 10.75rem;
+    height: 14.5rem;
     font: normal normal 500 20px/20px 'Roboto';
     letter-spacing: 0px;
     color: #ffc501;
@@ -150,10 +151,6 @@ export const ContainerForm = styled.div`
     border-radius: 5px;
     color: black;
     font-weight: 600;
-    :hover {
-      background-color: #ffc501;
-      transition: 0.5s;
-    }
   }
 
   .btn-save {
@@ -164,10 +161,5 @@ export const ContainerForm = styled.div`
     border-radius: 5px;
     color: black;
     font-weight: 600;
-    :hover {
-      background-color: #fff;
-      border: solid 1.5px #ffc501;
-      transition: 0.5s;
-    }
   }
 `;
