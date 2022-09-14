@@ -2,12 +2,15 @@ import styled from 'styled-components';
 
 export const ContainerBg = styled.div`
   width: 100%;
+  height: 100vh;
   background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const ContainerMain = styled.div`
-  max-width: 95%;
-  margin: 0 auto;
+  width: 95%;
+  margin: 1rem auto;
   background-color: #fff;
 
   .back-home {
@@ -32,13 +35,12 @@ export const ContainerMain = styled.div`
     letter-spacing: 0px;
     color: #000000;
   }
-`;
 
-export const SearchBooks = styled.div`
-  width: 90%;
-  padding-bottom: 1.5rem;
-  margin: 0 auto;
-
+  .SearchBooks {
+    width: 90%;
+    padding-bottom: 1.5rem;
+    margin: 0 auto;
+  }
   .container {
     width: 80%;
     height: 48px;
@@ -88,16 +90,16 @@ export const SearchBooks = styled.div`
     width: 30%;
     margin-top: 3px;
   }
-`;
 
-export const ContainerBooks = styled.div`
-  width: 95%;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 1rem;
-  padding: 1rem 0;
-  margin: 0 auto;
+  .ContainerBooks {
+    width: 95%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem 0;
+    margin: 0 auto;
+  }
 
   .container-book {
     display: flex;
@@ -134,3 +136,7 @@ export const ContainerBooks = styled.div`
     opacity: 1;
   }
 `;
+
+export const SearchBooks = styled.div``;
+
+export const ContainerBooks = styled.div``;

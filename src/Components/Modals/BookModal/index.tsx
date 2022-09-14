@@ -200,6 +200,7 @@ const BookModal = ({
                     <Button
                       className="btn-inactivate"
                       onClick={onClickInactive}
+                      style={{ border: 'solid 1px #49D749', color: '#49D749' }}
                     >
                       Ativar
                     </Button>

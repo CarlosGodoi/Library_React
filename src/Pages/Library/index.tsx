@@ -131,7 +131,7 @@ const Library = () => {
           <h3>/Biblioteca</h3>
         </div>
 
-        <SearchBooks>
+        <div className="SearchBooks">
           <form
             className="container"
             onSubmit={(event) => {
@@ -163,7 +163,7 @@ const Library = () => {
               </Select>
             </div>
           </form>
-          <ContainerBooks>
+          <div className="ContainerBooks">
             {books?.map((book: IBook, i) => {
               return (
                 <div
@@ -206,7 +206,10 @@ const Library = () => {
 
             {modalInactiveBook && (
               <InactivateBookModal
-                closeModal={() => setModalInactiveBook(false)}
+                closeModal={() => {
+                  setModalInactiveBook(false);
+                  setModalBook(true);
+                }}
                 selectedBook={selectedBook}
               />
             )}
@@ -217,8 +220,8 @@ const Library = () => {
                 selected={selectedBook}
               />
             )}
-          </ContainerBooks>
-        </SearchBooks>
+          </div>
+        </div>
       </ContainerMain>
     </ContainerBg>
   );

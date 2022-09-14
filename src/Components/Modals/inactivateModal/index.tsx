@@ -43,7 +43,13 @@ const InactivateBookModal = ({ closeModal, selectedBook }: IProps) => {
         <div className="container-title">
           <h3>Inativar Livro</h3>
         </div>
-        <form className="container-textArea" onSubmit={formik.handleSubmit}>
+        <form
+          className="container-textArea"
+          onSubmit={() => {
+            formik.handleSubmit();
+            closeModal();
+          }}
+        >
           <TextField
             margin="dense"
             multiline

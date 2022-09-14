@@ -15,6 +15,7 @@ export const ContainerModal = styled.div`
   background-color: #ffffff;
   border-radius: 5px;
   width: 51rem;
+  max-height: 100vh;
   border: solid 1px #707070;
   position: absolute;
   top: 50%;
@@ -40,13 +41,12 @@ export const ContainerModal = styled.div`
   .container-main {
     width: 95%;
     margin: 0 auto;
-    padding-bottom: 2.5rem;
     display: flex;
   }
 
   .container-img-btn {
     width: 40%;
-    padding: 2rem 0;
+    padding: 1rem 0;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -54,8 +54,8 @@ export const ContainerModal = styled.div`
 
   .img-book {
     width: 17rem;
-    padding-bottom: 1rem;
     margin: 0 auto;
+    padding-bottom: 1rem;
   }
 
   .img-book img {
@@ -65,7 +65,7 @@ export const ContainerModal = styled.div`
   }
 
   .container-btn {
-    width: 14.5rem;
+    width: 15rem;
     height: 50px;
     margin: 0 auto;
     border-radius: 5px;
@@ -96,7 +96,7 @@ export const ContainerModal = styled.div`
   }
   .title h2 {
     text-align: center;
-    font: normal normal 600 1.25rem 'Roboto';
+    font: normal normal 600 1.4rem 'Roboto';
     letter-spacing: 0px;
     color: #3e4756;
     opacity: 1;
@@ -104,7 +104,6 @@ export const ContainerModal = styled.div`
 
   .data-book {
     width: 100%;
-    padding-bottom: 1.5rem;
   }
 
   .container-contentBook-btns h3 {
@@ -117,7 +116,7 @@ export const ContainerModal = styled.div`
 
   .container-contentBook-btns p {
     text-align: left;
-    font: normal normal 300 0.87rem 'Roboto';
+    font: normal normal 300 0.8rem 'Roboto';
     letter-spacing: 0px;
     color: #3e4756;
     opacity: 1;
@@ -137,7 +136,7 @@ export const ContainerModal = styled.div`
 
   .btn-edit {
     width: 5.625rem;
-    height: 3.312rem;
+    height: 3.1rem;
     background: #ffffff 0% 0% no-repeat padding-box;
     border: 1px solid #167ce2;
     border-radius: 5px;
@@ -149,7 +148,7 @@ export const ContainerModal = styled.div`
 
   .btn-inactivate {
     width: 5.625rem;
-    height: 3.312rem;
+    height: 3.1rem;
     background: #ffffff 0% 0% no-repeat padding-box;
     border: 1px solid #ed5e5e;
     border-radius: 5px;
@@ -161,7 +160,7 @@ export const ContainerModal = styled.div`
 
   .btn-history {
     width: 5.625rem;
-    height: 3.312rem;
+    height: 3.1rem;
     background: #ffffff 0% 0% no-repeat padding-box;
     border: 1px solid #adb5bd;
     border-radius: 5px;
@@ -174,7 +173,11 @@ export const ContainerModal = styled.div`
   .data-rentBook {
     width: 44rem;
     margin: 0 auto;
+    height: 7.8rem;
     padding-bottom: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .title {
