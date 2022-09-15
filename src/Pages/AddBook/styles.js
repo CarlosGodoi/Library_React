@@ -11,7 +11,6 @@ export const ContainerBg = styled.div`
 export const ContainerMain = styled.div`
   width: 95%;
   height: 100vh;
-  max-height: 90%;
   margin: 1rem auto;
   background-color: #fff;
   display: flex;
@@ -47,7 +46,6 @@ export const ContainerForm = styled.div`
 
   .form-addBook {
     max-width: 65rem;
-    padding: 2rem 0;
     margin: 0 auto;
     display: grid;
     grid-gap: 1.2rem;
@@ -58,6 +56,10 @@ export const ContainerForm = styled.div`
       'image synopsis genre'
       'image synopsis data'
       '. btnCancel btnSave';
+
+    @media (max-width: 1000px) {
+      display: block;
+    }
   }
 
   .formImage {
@@ -68,6 +70,10 @@ export const ContainerForm = styled.div`
     background: no-repeat;
     background-size: cover;
     background-position: center;
+
+    @media (max-width: 999px) {
+      margin: 1rem auto;
+    }
   }
 
   .image-base64 {
@@ -76,26 +82,6 @@ export const ContainerForm = styled.div`
     object-fit: cover;
     cursor: pointer;
   }
-
-  /* .imgAdd-title {
-    width: 5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .imgAdd-title > img {
-    width: 1.5rem;
-    height: 1.5rem;
-    margin-right: 0.5rem;
-  }
-
-  .imgAdd-title p {
-    font: normal normal 500 20px/20px 'Roboto';
-    letter-spacing: 0px;
-    color: #ffc501;
-    opacity: 1;
-  } */
 
   .labelUpload {
     width: 10.75rem;
@@ -116,29 +102,54 @@ export const ContainerForm = styled.div`
     grid-area: title;
     width: 350px;
     height: 55px;
+
+    @media (max-width: 999px) {
+      margin: 1rem auto;
+      width: 55%;
+    }
   }
 
   .formAuthor {
     grid-area: author;
     width: 350px;
     height: 55px;
+
+    @media (max-width: 999px) {
+      margin: 1rem auto;
+      width: 55%;
+    }
   }
 
   .formSynopsis {
     grid-area: synopsis;
     width: 350px;
     height: 129px;
+
+    @media (max-width: 999px) {
+      margin: 1rem auto;
+      width: 55%;
+    }
   }
 
   .formGenre {
     grid-area: genre;
     width: 350px;
     height: 55px;
+
+    @media (max-width: 999px) {
+      margin: 1rem auto;
+      width: 55%;
+    }
   }
   .formData {
     grid-area: data;
     width: 350px;
     height: 55px;
+
+    @media (max-width: 999px) {
+      margin: 1rem auto;
+      width: 55%;
+    }
   }
 
   .buttons-form {
@@ -148,6 +159,26 @@ export const ContainerForm = styled.div`
     justify-content: space-between;
     grid-area: btnCancel;
     grid-area: btnSave;
+
+    @media (max-width: 999px) {
+      margin: 1rem auto;
+      width: 55%;
+    }
+
+    @media (max-width: 616px) {
+      margin: 1rem auto;
+      width: 60%;
+    }
+
+    @media (max-width: 490px) {
+      margin: 1rem auto;
+      width: 65%;
+    }
+
+    @media (max-width: 436px) {
+      margin: 1rem auto;
+      width: 70%;
+    }
   }
 
   .btn-cancel {
@@ -160,6 +191,21 @@ export const ContainerForm = styled.div`
     :hover {
       background-color: #ffc501;
       transition: 0.5s;
+    }
+
+    @media (max-width: 616px) {
+      margin: 1rem auto;
+      width: 100px;
+    }
+
+    @media (max-width: 490px) {
+      margin: 1rem auto;
+      width: 100px;
+    }
+
+    @media (max-width: 436px) {
+      margin: 1rem auto;
+      width: 80px;
     }
   }
 
@@ -175,6 +221,21 @@ export const ContainerForm = styled.div`
       background-color: #fff;
       border: solid 1.5px #ffc501;
       transition: 0.5s;
+    }
+
+    @media (max-width: 616px) {
+      margin: 1rem auto;
+      width: 100px;
+    }
+
+    @media (max-width: 490px) {
+      margin: 1rem auto;
+      width: 100px;
+    }
+
+    @media (max-width: 436px) {
+      margin: 1rem auto;
+      width: 80px;
     }
   }
 `;

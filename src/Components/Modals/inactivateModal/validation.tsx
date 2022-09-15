@@ -7,5 +7,5 @@ export const validationSchema = object({
 
 export const initialValues = {
   description: '',
-  isActive: true,
+  isActive: false,
 };

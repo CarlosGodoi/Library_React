@@ -45,7 +45,7 @@
     },
     {
       "id": "928ccbda-16fe-4d6c-bdb2-08d4ee28ac0e",
-      "tittle": "Hereges de Duna2",
+      "tittle": "Hereges de Duna",
       "author": "Frank Herbert",
       "genre": "Ficção Cientifica",
       "status": {
@@ -222,8 +222,8 @@
       "author": "Gustavo Ferreira",
       "genre": "Web Marketing",
       "status": {
-        "isActive": true,
-        "description": ""
+        "description": "jdjdhdkj",
+        "isActive": false
       },
       "image": "./assets/livro11.png",
       "systemEntryDate": "29/12/2021",
@@ -258,7 +258,7 @@
       "author": "Timothy Ferriss",
       "genre": "Autoajuda",
       "status": {
-        "description": "teste",
+        "description": "novo teste",
         "isActive": false
       },
       "image": "./assets/livro13.png",
@@ -276,8 +276,8 @@
       "author": "Hal Elrod",
       "genre": "Autoajuda",
       "status": {
-        "isActive": true,
-        "description": ""
+        "description": "klsksjs",
+        "isActive": false
       },
       "image": "./assets/livro14.png",
       "systemEntryDate": "11/06/2017",
@@ -294,8 +294,8 @@
       "author": "Carol S. Dweck",
       "genre": "Finanças",
       "status": {
-        "isActive": true,
-        "description": ""
+        "description": "jdjdkjdkjd",
+        "isActive": false
       },
       "image": "./assets/livro15.png",
       "systemEntryDate": "22/09/2020",

@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 
 export const ContainerBg = styled.div`
   width: 100%;
-  height: 100vh;
   padding-bottom: 1rem;
   background-color: #f4f4f4;
   display: flex;
@@ -11,7 +10,7 @@ export const ContainerBg = styled.div`
 
 export const ContainerMain = styled.div`
   width: 95%;
-  height: 100vh;
+  padding-bottom: 1rem;
   background-color: #fff;
   margin: 1rem auto;
   display: flex;
