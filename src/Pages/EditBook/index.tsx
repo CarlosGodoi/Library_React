@@ -186,7 +186,11 @@ const EditBook = () => {
               <Button className="btn-cancel" onClick={() => navigate('/home')}>
                 Cancelar
               </Button>
-              <Button type="submit" className="btn-save">
+              <Button
+                type="submit"
+                className="btn-save"
+                onClick={() => navigate('/biblioteca')}
+              >
                 Salvar
               </Button>
             </div>
