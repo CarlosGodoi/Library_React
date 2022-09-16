@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# Este projeto faz uso do JSON server abaixo seguem os passos para correta utilização.
+# Este projeto faz uso do JSON server, abaixo seguem os passos para correta utilização.
 
 ## Instalação o json server
 
