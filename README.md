@@ -2,6 +2,18 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Este projeto faz uso do JSON server abaixo seguem os passos para correta utilização.
+
+## Instalação o json server
+
+### yarn add json-server -D
+### yarn add axios
+### Após a instalação das bibliotecas configure package.json em "scripts"
+### "server": "json-server server.json -w --port 3333"
+
+### Para rodar o serviço do json server execute no terminal 
+### yarn server
+
 ## Available Scripts
 
 In the project directory, you can run:
