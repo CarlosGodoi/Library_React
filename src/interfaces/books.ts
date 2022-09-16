@@ -20,3 +20,10 @@ export type TStatus = {
         synopsis: string;
         rentHistory: TRentHistory[];
     }
+
+    export type TObjModal = {
+        modalLendBook: boolean,
+        modalInactiveBook: boolean,
+        modalLoanBook: boolean,
+        modalBook: boolean
+    }

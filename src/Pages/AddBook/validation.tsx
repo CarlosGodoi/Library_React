@@ -18,7 +18,7 @@ export const initialValues = {
   genre: '',
   image: '',
   rentHistory: [{ isBorrowed: false }],
-  status: { isActive: false },
+  status: { description: '', isActive: false },
   synopsis: '',
   systemEntryDate: '',
   tittle: '',

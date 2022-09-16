@@ -1,22 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import {
-  ContainerBg,
-  ContainerBooks,
-  ContainerMain,
-  SearchBooks,
-} from './styles';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import { useNavigate, useParams } from 'react-router-dom';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-import BookModal from '../../Components/Modals/BookModal';
-import LendBook from '../../Components/Modals/LendBookModal';
-import { getBookImage } from '../../utils/getImage';
-import InactivateBookModal from '../../Components/Modals/inactivateModal';
-import LoanBookModal from '../../Components/Modals/LoanModal';
-import GetAllBooks from '../../Services/GetAllBooks';
-import { IBook } from '../AddBook/interface';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useLoading } from '../../Components/Context/LoadingContext';
+import { useMessage } from '../../Components/Context/MessageContext';
+import { TObjModal } from '../../interfaces/books';
+import GetAllBooks from '../../Services/GetAllBooks';
+import { getBookImage } from '../../utils/getImage';
+import { IBook } from '../AddBook/interface';
+import RenderModal from './RenderModal';
+import { ContainerBg, ContainerMain } from './styles';
 
 const Library = () => {
   const [books, setBooks] = useState<IBook[]>([]);
@@ -24,14 +18,18 @@ const Library = () => {
   const navigate = useNavigate();
   const { setLoading } = useLoading();
 
-  const [modalBook, setModalBook] = useState(false);
   const [selectedBook, setSelectedBook] = useState<IBook>({} as IBook);
-  const [modalLendBook, setModalLendBook] = useState(false);
-  const [modalInactiveBook, setModalInactiveBook] = useState(false);
-  const [modalLoanBook, setModalLoanBook] = useState(false);
+
+  const [objOpenModal, setObjOpenModal] = useState<TObjModal>({
+    modalLendBook: false,
+    modalInactiveBook: false,
+    modalLoanBook: false,
+    modalBook: false,
+  });
 
   const [descriptionBook, setDescriptionBook] = useState<string>('');
   const [inputSearch, setInputSearch] = useState('');
+  const { setMessage } = useMessage();
 
   useEffect(() => {
     GetAllBooks()
@@ -39,37 +37,18 @@ const Library = () => {
         setBooks(res);
         setBooksOriginals(res);
       })
-      .catch((err: any) => console.log(err));
+      .catch((err: any) => {
+        setMessage({
+          content: '' + err,
+          display: true,
+          severity: 'error',
+        });
+      });
   }, []);
-
-  const opeModalEdit = (id: string) => {
-    setModalBook(false);
-    navigate(`/editarLivro/${id}`, { state: 'book' });
-  };
-
-  const openLendModal = () => {
-    setModalBook(false);
-    setModalLendBook(true);
-  };
-
-  const openInactiveModal = () => {
-    setModalBook(false);
-    setModalLendBook(false);
-    setModalInactiveBook(true);
-  };
-
-  const openLoanModal = () => {
-    setModalBook(false);
-    setModalLendBook(false);
-    setModalInactiveBook(false);
-    setModalLoanBook(true);
-  };
 
   function filterBooks() {
     let bookFilter = inputSearch;
     let bookAttribute = descriptionBook;
-    console.log(bookFilter);
-    console.log(bookAttribute);
 
     if (bookFilter !== '' && bookAttribute !== '') {
       switch (bookAttribute) {
@@ -122,6 +101,21 @@ const Library = () => {
     }
   }
 
+  const handleModal = (
+    modal:
+      | 'modalLendBook'
+      | 'modalInactiveBook'
+      | 'modalLoanBook'
+      | 'modalBook',
+  ) => {
+    const aux = { ...objOpenModal };
+    (Object.keys(aux) as (keyof typeof aux)[]).forEach((key) => {
+      aux[key] = false;
+    });
+    aux[modal] = true;
+    setObjOpenModal(aux);
+  };
+
   return (
     <ContainerBg>
       <ContainerMain>
@@ -170,8 +164,8 @@ const Library = () => {
                   className="container-book"
                   key={i}
                   onClick={() => {
+                    handleModal('modalBook');
                     setSelectedBook(book);
-                    setModalBook(true);
                   }}
                 >
                   <div className="book">
@@ -183,43 +177,36 @@ const Library = () => {
                 </div>
               );
             })}
-            {modalBook && (
-              <BookModal
-                selectedBook={selectedBook}
-                onClickEdit={opeModalEdit}
-                onClickLend={openLendModal}
-                onClickInactive={openInactiveModal}
-                onClickLoan={openLoanModal}
-                closeModal={() => setModalBook(false)}
-              />
-            )}
-
-            {modalLendBook && (
-              <LendBook
-                closeModal={() => {
-                  setModalLendBook(false);
-                  setModalBook(true);
-                }}
-                selectedBook={selectedBook}
-              />
-            )}
-
-            {modalInactiveBook && (
-              <InactivateBookModal
-                closeModal={() => {
-                  setModalInactiveBook(false);
-                  setModalBook(true);
-                }}
-                selectedBook={selectedBook}
-              />
-            )}
-
-            {modalLoanBook && (
-              <LoanBookModal
-                closeModal={() => setModalLoanBook(false)}
-                selected={selectedBook}
-              />
-            )}
+            <RenderModal
+              closeModal={() =>
+                setObjOpenModal({
+                  ...objOpenModal,
+                  modalBook: false,
+                })
+              }
+              closeModalInactive={() => {
+                setObjOpenModal({
+                  ...objOpenModal,
+                  modalInactiveBook: false,
+                  modalBook: true,
+                });
+                GetAllBooks();
+              }}
+              closeModalLend={() => {
+                setObjOpenModal({
+                  ...objOpenModal,
+                  modalLendBook: false,
+                  modalBook: true,
+                });
+              }}
+              closeModalLoan={() =>
+                setObjOpenModal({ ...objOpenModal, modalLoanBook: false })
+              }
+              objModal={objOpenModal}
+              selectedBook={selectedBook}
+              handleModal={handleModal}
+              setSelected={setSelectedBook}
+            />
           </div>
         </div>
       </ContainerMain>

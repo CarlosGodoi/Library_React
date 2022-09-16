@@ -5,17 +5,25 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import MaterialTable from 'material-table';
 import { ThemeProvider, createTheme } from '@mui/material';
 import loanHistory from '../../Services/loanHistory';
+import { useMessage } from '../../Components/Context/MessageContext';
 
 const LoanHistory = () => {
   const navigate = useNavigate();
   const defaultMaterialTheme = createTheme();
 
   const [rentHistory, setRentHistory] = useState([]);
+  const { setMessage } = useMessage();
 
   useEffect(() => {
     loanHistory()
       .then((res: any) => setRentHistory(res))
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setMessage({
+          content: '' + err,
+          display: true,
+          severity: 'error',
+        });
+      });
   }, []);
   return (
     <ContainerBg>

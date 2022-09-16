@@ -1,6 +1,7 @@
 import { Button, TextField } from '@material-ui/core';
 import { useFormik } from 'formik';
 import React from 'react';
+import { TStatus } from '../../../interfaces/books';
 import { IBook } from '../../../Pages/AddBook/interface';
 import updateBook from '../../../Services/UpdateBook';
 import { BgModal, ContainerModal } from './styles';
@@ -16,13 +17,17 @@ const InactivateBookModal = ({ closeModal, selectedBook }: IProps) => {
     closeModal();
   };
 
-  async function inactivateBook(values: { description: string }) {
-    const updatedBook: IBook = {
+  async function toogleStatusBook({ description }: TStatus) {
+    const updatedBookPayLoad: IBook = {
       ...selectedBook,
-      status: { description: values.description, isActive: false },
+      status: {
+        description: description,
+        isActive: !selectedBook.status.isActive,
+      },
     };
-    await updateBook(updatedBook).then((res) => {
-      console.log(res);
+
+    await updateBook(updatedBookPayLoad).then((res) => {
+      closeModal();
     });
   }
 
@@ -30,7 +35,7 @@ const InactivateBookModal = ({ closeModal, selectedBook }: IProps) => {
     initialValues,
     validationSchema,
     onSubmit(values: any) {
-      inactivateBook(values);
+      toogleStatusBook(values);
     },
   });
 
@@ -43,13 +48,7 @@ const InactivateBookModal = ({ closeModal, selectedBook }: IProps) => {
         <div className="container-title">
           <h3>Inativar Livro</h3>
         </div>
-        <form
-          className="container-textArea"
-          onSubmit={() => {
-            formik.handleSubmit();
-            closeModal();
-          }}
-        >
+        <form className="container-textArea" onSubmit={formik.handleSubmit}>
           <TextField
             margin="dense"
             multiline
@@ -64,7 +63,7 @@ const InactivateBookModal = ({ closeModal, selectedBook }: IProps) => {
           />
           <div className="container-btnForm">
             <Button className="btn-inactivate" type="submit">
-              Inativar
+              {selectedBook.status.isActive ? 'Inativar' : 'Ativar'}
             </Button>
           </div>
         </form>

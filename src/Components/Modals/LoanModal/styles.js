@@ -14,19 +14,20 @@ export const BgModal = styled.div`
 export const ContainerModal = styled.div`
   background-color: #ffffff;
   border-radius: 5px;
-  width: 80%;
-
+  width: 90%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: block;
 
   .container-exit {
     width: 95%;
-    height: 1.5rem;
+    height: 1.3rem;
     margin: 0 auto;
-    padding-top: 1rem;
+    padding: 0.8rem auto;
     display: flex;
     justify-content: end;
     align-items: center;
@@ -43,7 +44,7 @@ export const ContainerModal = styled.div`
   }
 
   .container-title h3 {
-    font: normal normal 600 18px 'Roboto';
+    font: normal normal 600 1.1rem 'Roboto';
     letter-spacing: 0px;
     color: #3e4756;
     opacity: 1;

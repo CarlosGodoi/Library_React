@@ -25,7 +25,6 @@ const LendBook = ({ closeModal, selectedBook }: IProps) => {
     };
     await updateBook(updatedBook)
       .then((res) => {
-        console.log(res);
         closeModal();
       })
       .catch((err) => {

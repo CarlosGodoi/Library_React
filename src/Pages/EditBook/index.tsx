@@ -23,10 +23,15 @@ const EditBook = () => {
     if (id)
       GetBookById(id)
         .then((res) => {
-          console.log(res);
           formik.setValues(res);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          setMessage({
+            content: '' + err,
+            display: true,
+            severity: 'error',
+          });
+        });
   }, [id]);
 
   const UploadImage = async (e: any) => {
@@ -51,7 +56,6 @@ const EditBook = () => {
   };
 
   function saveBookEdition(values: IBook) {
-    // eslint-disable-next-line no-restricted-globals
     updateBook(values)
       .then((res: IBook) =>
         setMessage({
@@ -74,7 +78,6 @@ const EditBook = () => {
     validationSchema,
     onSubmit(values: IBook) {
       saveBookEdition(values);
-      console.log(values);
     },
   });
 
@@ -93,7 +96,6 @@ const EditBook = () => {
             onSubmit={(event) => {
               event?.preventDefault();
               formik.handleSubmit(event);
-              console.log('função chamada');
             }}
           >
             <div className="formImage">

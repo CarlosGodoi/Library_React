@@ -1,4 +1,5 @@
 import { string, object, array } from 'yup';
+import { TStatus } from '../../interfaces/books';
 
 export const validationSchema = object({
   id: string(),
@@ -18,7 +19,7 @@ export const initialValues = {
   genre: '',
   image: '',
   rentHistory: [],
-  status: {},
+  status: {} as TStatus,
   synopsis: '',
   systemEntryDate: '',
   tittle: '',
