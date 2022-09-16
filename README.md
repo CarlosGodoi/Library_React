@@ -6,13 +6,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Instalação o json server
 
-### yarn add json-server -D
-### yarn add axios
-### Após a instalação das bibliotecas configure package.json em "scripts"
-### "server": "json-server server.json -w --port 3333"
+#### yarn add json-server -D
+#### yarn add axios
+#### Após a instalação das bibliotecas configure package.json em "scripts"
+#### "server": "json-server server.json -w --port 3333"
 
 ### Para rodar o serviço do json server execute no terminal 
-### yarn server
+#### yarn server
 
 ## Available Scripts
 
