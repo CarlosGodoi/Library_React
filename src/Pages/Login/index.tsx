@@ -1,3 +1,4 @@
+import React from 'react';
 import { ContainerBg, ContainerLogin } from './styles';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -43,7 +44,7 @@ const Login = () => {
   });
 
   return (
-    <ContainerBg>
+    <ContainerBg data-testid="login">
       <ContainerLogin>
         <div className="LogoTitle">
           <img src={logo} alt="" />
