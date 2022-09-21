@@ -51,9 +51,11 @@ const Login = () => {
         </div>
         <form className="Inputs" onSubmit={formik.handleSubmit}>
           <TextField
+            data-testid="input-email"
             margin="dense"
             className="email"
             name="email"
+            type="email"
             value={formik.values.email}
             id="outlined-basic"
             label="Email"
@@ -63,10 +65,12 @@ const Login = () => {
             helperText={formik.touched.email && formik.errors.email}
           />
           <TextField
+            data-testid="input-password"
             margin="dense"
             className="senha"
             id="outlined-basic"
             name="password"
+            type="password"
             value={formik.values.password}
             label="Senha"
             variant="outlined"
@@ -80,6 +84,7 @@ const Login = () => {
           </div>
           <div className="btn">
             <Button
+              data-testid="Entrar"
               type="submit"
               className="button-submit"
               size="large"
