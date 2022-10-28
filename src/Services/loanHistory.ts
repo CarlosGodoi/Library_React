@@ -7,7 +7,7 @@ const loanHistory = async () => {
 
   await api
     .get('./books')
-    .then((body) => 
+    .then((body) => {
       data = body.data.forEach((book: any) =>
         book.rentHistory?.map((rent: any) =>
           newArrayBooks.push({
@@ -18,7 +18,8 @@ const loanHistory = async () => {
             deliveryDate: rent.deliveryDate,
           }),
         ),
-    ));
+        console.log(body.data)
+    )});
       return Promise.resolve(newArrayBooks);
     // ).catch((err:any) => Promise.reject(err));
 };

@@ -16,8 +16,12 @@ const LoanHistory = () => {
 
   useEffect(() => {
     loanHistory()
-      .then((res: any) => setRentHistory(res))
+      .then((res: any) => {
+        console.log('entrei aqui ', res);
+        setRentHistory(res);
+      })
       .catch((err) => {
+        console.log(err, 'aqui no erro');
         setMessage({
           content: '' + err,
           display: true,
@@ -26,7 +30,7 @@ const LoanHistory = () => {
       });
   }, []);
   return (
-    <ContainerBg>
+    <ContainerBg data-testId="loanHistory">
       <ContainerMain>
         <div className="back-home" onClick={() => navigate('/home')}>
           <ArrowBackIosIcon fontSize="small" />
@@ -36,6 +40,7 @@ const LoanHistory = () => {
         <ContainerTable>
           <ThemeProvider theme={defaultMaterialTheme}>
             <MaterialTable
+              data-testId="table"
               data={rentHistory}
               title="Tabela comparativa"
               columns={[

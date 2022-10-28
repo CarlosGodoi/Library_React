@@ -1,3 +1,4 @@
+import React from 'react';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -117,7 +118,7 @@ const Library = () => {
   };
 
   return (
-    <ContainerBg>
+    <ContainerBg data-testId="books">
       <ContainerMain>
         <div className="back-home" onClick={() => navigate('/home')}>
           <ArrowBackIosIcon fontSize="small" />
@@ -127,6 +128,7 @@ const Library = () => {
 
         <div className="SearchBooks">
           <form
+            name="form"
             className="container"
             onSubmit={(event) => {
               event.preventDefault();
@@ -135,16 +137,26 @@ const Library = () => {
           >
             <div className="input-search">
               <input
+                data-testId="input-search"
                 type="text"
+                name="search"
+                id="search"
                 placeholder="Pesquisar livro..."
                 value={inputSearch}
                 onChange={(e) => setInputSearch(e.target.value)}
               />
-              <button type="submit">Buscar</button>
+              <button data-testId="buscar" type="submit">
+                Buscar
+              </button>
             </div>
             <div className="select-search">
               <Select
-                onChange={(e) => setDescriptionBook(e.target.value)}
+                onChange={(e) => {
+                  setDescriptionBook(e.target.value);
+                }}
+                inputProps={{ id: 'genre', 'data-testid': 'genre' }}
+                name="genre"
+                id="genre"
                 value={descriptionBook}
                 fullWidth
                 size="small"
@@ -161,6 +173,7 @@ const Library = () => {
             {books?.map((book: IBook, i) => {
               return (
                 <div
+                  data-testId="book"
                   className="container-book"
                   key={i}
                   onClick={() => {
@@ -178,6 +191,7 @@ const Library = () => {
               );
             })}
             <RenderModal
+              data-testId="modal"
               closeModal={() =>
                 setObjOpenModal({
                   ...objOpenModal,

@@ -8,10 +8,14 @@ import { useNavigate } from 'react-router-dom';
 const Home = () => {
   const navigate = useNavigate();
   return (
-    <ContainerBg>
+    <ContainerBg data-testId="home">
       <Main>
         <Card>
-          <div className="img-card" onClick={() => navigate('/cadastrarLivro')}>
+          <div
+            data-testId="add-book"
+            className="img-card"
+            onClick={() => navigate('/cadastrarLivro')}
+          >
             <img src={add} alt="Icone adicionar" />
           </div>
           <div className="title" onClick={() => navigate('/cadastrarLivro')}>
@@ -19,7 +23,11 @@ const Home = () => {
           </div>
         </Card>
         <Card>
-          <div className="img-card" onClick={() => navigate('/biblioteca')}>
+          <div
+            data-testId="biblioteca"
+            className="img-card"
+            onClick={() => navigate('/biblioteca')}
+          >
             <img src={contact} alt="Icone adicionar" />
           </div>
           <div className="title" onClick={() => navigate('/biblioteca')}>
@@ -28,6 +36,7 @@ const Home = () => {
         </Card>
         <Card>
           <div
+            data-testId="card-emprestimo"
             className="img-card"
             onClick={() => navigate('/historicoEmprestimo')}
           >

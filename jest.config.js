@@ -5,5 +5,6 @@ module.exports = {
     '\\.(css|less)$': '<rootDir>/__mocks__/styleMock.js',
     '^.+\\.(css|less|scss)$': 'babel-jest',
   },
+  setupFilesAfterEnv: ['<rootDir>/jest-setup.js'],
   testEnvironment: 'jsdom',
 };

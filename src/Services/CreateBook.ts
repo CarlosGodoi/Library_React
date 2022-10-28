@@ -6,7 +6,7 @@ const createBook = async (values: IBook) => {
     const res = await api.post('/books', values);
     return Promise.resolve(res.data);
   } catch (err) {
-    return Promise.reject('Ops ocorreu um erro');
+    return Promise.reject(err);
   }
 };
 

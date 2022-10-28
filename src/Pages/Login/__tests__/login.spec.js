@@ -2,19 +2,13 @@ import Login from '..';
 import React from 'react';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { MemoryRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
-import useMessage from '../../../Components/Context/MessageContext';
+import { MemoryRouter } from 'react-router-dom';
+import { useMessage } from '../../../Components/Context/MessageContext';
+import { useAuth } from '../../../Components/Context/UserContext';
 import { act } from 'react-dom/test-utils';
-
-jest.mock('../../../Components/Context/MessageContext');
-
-const messageMock = { useMessage };
-const STATE_SPY = jest.spyOn(messageMock, 'useMessage');
-const CLICK_HANDLER = jest.fn();
-STATE_SPY.mockReturnValue({
-  setMessage: CLICK_HANDLER,
-});
+import { rest } from 'msw';
+import { setupServer } from 'msw/node';
 
 const mockedUseNavigate = jest.fn();
 jest.mock('react-router-dom', () => ({
@@ -22,59 +16,132 @@ jest.mock('react-router-dom', () => ({
   useNavigate: () => mockedUseNavigate,
 }));
 
-const homepageErrors = console.error.bind(console.error);
-beforeAll(() => {
-  console.error = (errormessage) => {
-    const suppressedErrors = errormessage
-      .toString()
-      .includes('Warning: Failed prop type:');
+jest.mock('../../../Components/Context/MessageContext');
 
-    !suppressedErrors && homepageErrors(errormessage);
-  };
+const message = { useMessage };
+const STATE_SPY = jest.spyOn(message, 'useMessage');
+const CLICK_HANDLER = jest.fn();
+STATE_SPY.mockReturnValue({
+  setMessage: CLICK_HANDLER,
 });
-afterAll(() => {
-  console.error = homepageErrors;
+
+jest.mock('../../../Components/Context/UserContext');
+
+const login = { useAuth };
+const STATE_SPY2 = jest.spyOn(login, 'useAuth');
+
+STATE_SPY2.mockReturnValue({
+  handleLogin: async () => {
+    return Promise.resolve(false);
+  },
+});
+
+const getLoginServer = setupServer(
+  rest.get(`*login`, (req, res, ctx) => {
+    return res(ctx.status(200));
+  }),
+);
+
+const postLoginServer = setupServer(
+  rest.post(`*login`, (req, res, ctx) => {
+    return res(ctx.status(200));
+  }),
+);
+
+beforeEach(() => {
+  getLoginServer.listen();
+  postLoginServer.listen();
+});
+
+afterEach(() => {
+  getLoginServer.close();
+  postLoginServer.close();
 });
 
 describe('Integrating unit tests into the login page', () => {
   it('should render Login component', () => {
     render(<Login />);
-
     expect(screen.getByTestId('login')).toBeInTheDocument();
   });
 
-  it('should test if input email textfield doesnt accept fields that are not emails', async () => {
+  it('should show success message when user login is correct and navigate to home', async () => {
     render(<Login />, { wrapper: MemoryRouter });
+    getLoginServer.use(
+      rest.get('*login', (req, res, ctx) => {
+        return res.once(
+          ctx.status(200),
+          ctx.json([
+            {
+              email: 'admin@admin.com.br',
+              password: 'admin123',
+            },
+            {
+              email: 'gustavo@gmail.com',
+              password: 'gustavokunde',
+            },
+            {
+              email: 'gx2tecnologia@gx2.com.br',
+              password: 'gx2@123',
+            },
+          ]),
+        );
+      }),
+    );
 
-    const inputMail = screen.getByTestId('input-email').querySelector('input');
-    expect(inputMail.type).toBe('email');
-  });
+    const inputEmail = screen.getByTestId('input-email').querySelector('input');
 
-  it('should show error modal when inputs are wrong', async () => {
-    render(<Login />, { wrapper: MemoryRouter });
+    const inputPassword = screen
+      .getByTestId('input-password')
+      .querySelector('input');
 
-    const inputMail = screen.getByTestId('input-email').querySelector('input');
-
-    const inputPass = screen.getByTestId('input-email').querySelector('input');
-
-    fireEvent.change(inputMail, {
-      target: { value: 'eduardo@gx2.com.br' },
-    });
-
-    fireEvent.change(inputPass, {
-      target: { value: '123456' },
-    });
-
-    act(() => {
-      userEvent.click(screen.getByText('Entrar'));
-    });
+    fireEvent.change(inputEmail, { target: { value: 'admin@admin.com.br' } });
+    fireEvent.change(inputPassword, { target: { value: 'admin123' } });
+    userEvent.click(screen.getByTestId('entrar'));
 
     await waitFor(() => {
       expect(CLICK_HANDLER).toHaveBeenCalledWith({
-        content: 'Usuário ou senha inválida',
+        content: 'Login realizado',
+        display: true,
+        severity: 'success',
+      });
+    });
+
+    await waitFor(() => {
+      expect(mockedUseNavigate).toHaveBeenCalledWith('/home');
+    });
+  });
+
+  fit('should show error message on screen if login is incorrect', async () => {
+    render(<Login />, { wrapper: MemoryRouter });
+
+    postLoginServer.use(
+      rest.post(`*login`, (req, res, ctx) => {
+        return res.once(ctx.status(200));
+      }),
+    );
+    const inputEmail = screen.getByTestId('input-email').querySelector('input');
+
+    const inputPassword = screen
+      .getByTestId('input-password')
+      .querySelector('input');
+
+    fireEvent.change(inputEmail, { target: { value: 'admin@admin' } });
+    fireEvent.change(inputPassword, { target: { value: '123abc' } });
+    userEvent.click(screen.getByTestId('entrar'));
+
+    console.log(inputEmail);
+    console.log(inputPassword);
+
+    await waitFor(() => {
+      expect(CLICK_HANDLER).toHaveBeenCalledWith({
+        content: 'Usuário não cadastrado',
         display: true,
         severity: 'error',
       });
+    });
+
+    await waitFor(() => {
+      expect(mockedUseNavigate).toHaveBeenCalledWith('/');
     });
   });
 });

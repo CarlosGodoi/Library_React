@@ -78,11 +78,12 @@ const EditBook = () => {
     validationSchema,
     onSubmit(values: IBook) {
       saveBookEdition(values);
+      navigate('/biblioteca');
     },
   });
 
   return (
-    <ContainerBg>
+    <ContainerBg data-testId="edit">
       <ContainerMain>
         <div className="back-home" onClick={() => navigate('/biblioteca')}>
           <ArrowBackIosIcon fontSize="small" />
@@ -95,12 +96,13 @@ const EditBook = () => {
             className="form-addBook"
             onSubmit={(event) => {
               event?.preventDefault();
-              formik.handleSubmit(event);
+              formik.handleSubmit();
             }}
           >
             <div className="formImage">
               <label htmlFor="image" className="labelUpload">
                 <input
+                  data-testId="input-image"
                   className="customFileInput"
                   type="file"
                   name="image"
@@ -116,6 +118,7 @@ const EditBook = () => {
 
             <div className="formTitle">
               <TextField
+                data-testId="input-title"
                 margin="dense"
                 fullWidth
                 name="tittle"
@@ -128,6 +131,7 @@ const EditBook = () => {
             </div>
             <div className="formAuthor">
               <TextField
+                data-testId="input-author"
                 margin="dense"
                 fullWidth
                 name="author"
@@ -140,6 +144,8 @@ const EditBook = () => {
             </div>
             <div className="formSynopsis">
               <TextField
+                // inputProps={{ id: 'synopsis', 'data-testid': 'input-synopsis' }}
+                data-testId="input-synopsis"
                 margin="dense"
                 multiline
                 fullWidth
@@ -154,6 +160,7 @@ const EditBook = () => {
             </div>
             <div className="formGenre">
               <TextField
+                inputProps={{ id: 'genre', 'data-testid': 'genre' }}
                 select
                 fullWidth
                 margin="dense"
@@ -175,6 +182,7 @@ const EditBook = () => {
             </div>
             <div className="formData">
               <TextField
+                data-testId="input-date"
                 fullWidth
                 name="systemEntryDate"
                 id="systemEntryDate"
@@ -185,14 +193,13 @@ const EditBook = () => {
               />
             </div>
             <div className="buttons-form">
-              <Button className="btn-cancel" onClick={() => navigate('/home')}>
-                Cancelar
-              </Button>
               <Button
-                type="submit"
-                className="btn-save"
+                className="btn-cancel"
                 onClick={() => navigate('/biblioteca')}
               >
+                Cancelar
+              </Button>
+              <Button type="submit" className="btn-save">
                 Salvar
               </Button>
             </div>

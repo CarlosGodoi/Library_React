@@ -31,6 +31,7 @@ const RenderModal: React.FC<IProps> = ({
   closeModalLoan,
   closeModalLend,
 }) => {
+  console.log(objModal);
   if (objModal.modalBook) {
     return (
       <BookModal

@@ -26,7 +26,7 @@ const AddBook = () => {
       })
       .catch((err) =>
         setMessage({
-          content: '' + err,
+          content: 'CAIU NO CATCH: ' + err,
           display: true,
           severity: 'error',
         }),
@@ -76,6 +76,7 @@ const AddBook = () => {
             <div className="formImage">
               <label htmlFor="image" className="labelUpload">
                 <input
+                  data-testid="input-image"
                   className="customFileInput"
                   type="file"
                   name="image"
@@ -92,6 +93,7 @@ const AddBook = () => {
 
             <div className="formTitle">
               <TextField
+                data-testid="input-title"
                 margin="dense"
                 fullWidth
                 name="tittle"
@@ -106,6 +108,7 @@ const AddBook = () => {
             </div>
             <div className="formAuthor">
               <TextField
+                data-testid="input-author"
                 margin="dense"
                 fullWidth
                 name="author"
@@ -128,6 +131,7 @@ const AddBook = () => {
                 id="synopsis"
                 label="Sinopse"
                 variant="outlined"
+                data-testid="input-synopsis"
                 value={formik.values.synopsis}
                 onChange={formik.handleChange}
                 error={Boolean(
@@ -143,20 +147,30 @@ const AddBook = () => {
                 margin="dense"
                 name="genre"
                 id="genre"
+                inputProps={{ id: 'genre', 'data-testid': 'genre' }}
                 label="genero"
                 value={formik.values.genre}
                 onChange={formik.handleChange}
                 error={Boolean(formik.touched.genre && formik.errors.genre)}
                 helperText={formik.touched.genre && formik.errors.genre}
               >
-                <MenuItem value="Fantasia">Fantasia</MenuItem>
-                <MenuItem value="Ação e Aventura">Ação e Aventura</MenuItem>
-                <MenuItem value="Horror">Horror</MenuItem>
-                <MenuItem value="Romance">Romance</MenuItem>
+                <MenuItem data-testid="genreOption" value="Fantasia">
+                  Fantasia
+                </MenuItem>
+                <MenuItem data-testid="genreOption" value="Ação e Aventura">
+                  Ação e Aventura
+                </MenuItem>
+                <MenuItem data-testid="genreOption" value="Horror">
+                  Horror
+                </MenuItem>
+                <MenuItem data-testid="genreOption" value="Romance">
+                  Romance
+                </MenuItem>
               </TextField>
             </div>
             <div className="formData">
               <TextField
+                data-testid="input-date"
                 fullWidth
                 name="systemEntryDate"
                 id="systemEntryDate"

@@ -24,14 +24,25 @@ const Login = () => {
       setLoading({ visible: true });
       handleLogin(values)
         .then((resp) => {
-          if (resp === true)
+          if (resp === true) {
             setMessage({
               content: 'Login realizado',
               display: true,
               severity: 'success',
             });
-          setLoading({ visible: false });
-          navigate('/home');
+            console.log('Caiu no Then');
+            setLoading({ visible: false });
+            navigate('/home');
+          } else {
+            console.log('Caiu no Catch');
+            setLoading({ visible: false });
+            setMessage({
+              content: `Usuário não cadastrado`,
+              display: true,
+              severity: 'error',
+            });
+            navigate('/');
+          }
         })
         .catch((err) =>
           setMessage({
@@ -84,7 +95,7 @@ const Login = () => {
           </div>
           <div className="btn">
             <Button
-              data-testid="Entrar"
+              data-testid="entrar"
               type="submit"
               className="button-submit"
               size="large"
