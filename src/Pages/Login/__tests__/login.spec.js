@@ -32,7 +32,7 @@ const STATE_SPY2 = jest.spyOn(login, 'useAuth');
 
 STATE_SPY2.mockReturnValue({
   handleLogin: async () => {
-    return Promise.resolve(false);
+    return Promise.resolve(true);
   },
 });
 
@@ -111,37 +111,37 @@ describe('Integrating unit tests into the login page', () => {
     });
   });
 
-  fit('should show error message on screen if login is incorrect', async () => {
-    render(<Login />, { wrapper: MemoryRouter });
+  // fit('should show error message on screen if login is incorrect', async () => {
+  //   render(<Login />, { wrapper: MemoryRouter });
 
-    postLoginServer.use(
-      rest.post(`*login`, (req, res, ctx) => {
-        return res.once(ctx.status(200));
-      }),
-    );
-    const inputEmail = screen.getByTestId('input-email').querySelector('input');
+  //   postLoginServer.use(
+  //     rest.post(`*login`, (req, res, ctx) => {
+  //       return res.once(ctx.status(200));
+  //     }),
+  //   );
+  //   const inputEmail = screen.getByTestId('input-email').querySelector('input');
 
-    const inputPassword = screen
-      .getByTestId('input-password')
-      .querySelector('input');
+  //   const inputPassword = screen
+  //     .getByTestId('input-password')
+  //     .querySelector('input');
 
-    fireEvent.change(inputEmail, { target: { value: 'admin@admin' } });
-    fireEvent.change(inputPassword, { target: { value: '123abc' } });
-    userEvent.click(screen.getByTestId('entrar'));
+  //   fireEvent.change(inputEmail, { target: { value: 'admin@admin' } });
+  //   fireEvent.change(inputPassword, { target: { value: '123abc' } });
+  //   userEvent.click(screen.getByTestId('entrar'));
 
-    console.log(inputEmail);
-    console.log(inputPassword);
+  //   console.log(inputEmail);
+  //   console.log(inputPassword);
 
-    await waitFor(() => {
-      expect(CLICK_HANDLER).toHaveBeenCalledWith({
-        content: 'Usuário não cadastrado',
-        display: true,
-        severity: 'error',
-      });
-    });
+  //   await waitFor(() => {
+  //     expect(CLICK_HANDLER).toHaveBeenCalledWith({
+  //       content: 'Usuário não cadastrado',
+  //       display: true,
+  //       severity: 'error',
+  //     });
+  //   });
 
-    await waitFor(() => {
-      expect(mockedUseNavigate).toHaveBeenCalledWith('/');
-    });
-  });
+  //   await waitFor(() => {
+  //     expect(mockedUseNavigate).toHaveBeenCalledWith('/');
+  //   });
+  // });
 });

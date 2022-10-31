@@ -26,7 +26,7 @@ const AddBook = () => {
       })
       .catch((err) =>
         setMessage({
-          content: 'CAIU NO CATCH: ' + err,
+          content: 'Ocorreu um erro ' + err,
           display: true,
           severity: 'error',
         }),

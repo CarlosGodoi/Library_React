@@ -37,7 +37,7 @@ describe('Component library unit tests', () => {
     expect(screen.getByText('Home')).toBeInTheDocument();
   });
 
-  it('should list the teams on screen', async () => {
+  it('should list the books on screen', async () => {
     render(<Library />, { wrapper: MemoryRouter });
     server.use(
       rest.get(`*books`, (req, res, ctx) => {
@@ -98,7 +98,6 @@ describe('Component library unit tests', () => {
     render(<Library />, { wrapper: MemoryRouter });
 
     const handleClose = jest.fn();
-    const open = jest.fn();
     const Modal = (
       <RenderModal
         closeModal={handleClose}
@@ -111,6 +110,8 @@ describe('Component library unit tests', () => {
       />
     );
 
-    expect(screen.getByText('modalBook')).toBeTruthy();
+    userEvent.click(screen.getByTestId('book'));
+
+    expect(Modal).toHaveBeenCalled(1);
   });
 });

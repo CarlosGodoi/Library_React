@@ -82,11 +82,11 @@ describe('Create new book tests', () => {
     });
   });
 
-  fit('should show success message and navigate after create book', async () => {
+  it('should show success message and navigate after create book', async () => {
     render(<AddBook />, { wrapper: MemoryRouter });
 
     postBookServer.use(
-      rest.post(`*book`, (req, res, ctx) => {
+      rest.post(`*books`, (req, res, ctx) => {
         return res.once(ctx.status(201));
       }),
     );
@@ -125,6 +125,57 @@ describe('Create new book tests', () => {
         content: 'Dados enviados com sucesso',
         display: true,
         severity: 'success',
+      });
+    });
+
+    await waitFor(() => {
+      expect(mockedUsedNavigate).toHaveBeenCalledWith('/biblioteca');
+    });
+  });
+
+  it('should show error message and navigate after create book', async () => {
+    render(<AddBook />, { wrapper: MemoryRouter });
+
+    postBookServer.use(
+      rest.post(`*books`, (req, res, ctx) => {
+        return res.once(ctx.status(400));
+      }),
+    );
+
+    const title = screen.getByTestId('input-title').querySelector('input');
+
+    const author = screen.getByTestId('input-author').querySelector('input');
+
+    const sinopsys = screen
+      .getByTestId('input-synopsis')
+      .querySelector('textarea');
+
+    const entryDate = screen.getByTestId('input-date').querySelector('input');
+
+    const image = screen.getByTestId('input-image');
+
+    const genreSelect = screen.getByTestId('genre');
+
+    fireEvent.change(genreSelect, { target: { value: 'Fantasia' } });
+
+    fireEvent.change(title, { target: { value: 'teste' } });
+    fireEvent.change(author, { target: { value: 'desconhecido' } });
+    fireEvent.change(sinopsys, { target: { value: 'jksh jkshkjs sui' } });
+    // fireEvent.change(entryDate, { target: { value: '' } });
+
+    let file;
+    file = new File(['(⌐□_□)'], 'chucknorris.png', { type: 'image/png' });
+    fireEvent.change(image, { target: { files: [file] } });
+
+    act(() => {
+      userEvent.click(screen.getByText('Salvar'));
+    });
+
+    await waitFor(() => {
+      expect(CLICK_HANDLER).toHaveBeenCalledWith({
+        content: 'Dados enviados com sucesso',
+        display: true,
+        severity: 'error',
       });
     });
 
